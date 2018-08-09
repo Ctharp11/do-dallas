@@ -1,0 +1,17 @@
+html {
+  font-size: 10px; }
+
+body {
+  background: purple;
+  background: #efefef; }
+  body:before {
+    content: '';
+    display: block;
+    background: grey;
+    height: 10px;
+    width: 100%; }
+
+.test {
+  color: red; }
+
+/*# sourceMappingURL=style.css.map*/

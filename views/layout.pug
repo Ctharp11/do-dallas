@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title='Do Dallas'
+        link(rel='stylesheet', href='/dist/style.css')
+        link(rel='shortcut icon' type="image/png href="/images)
+        //-link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+    block header
+      header.top
+        nav.nav
+            p.test Pug source code!
+        
+
+    block scripts
+      script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+      script(src="/dist/App.bundle.js")
