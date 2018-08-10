@@ -1,21 +1,23 @@
-html {
-    font-size: 10px;
-  }
-  
-  body {
-    background: purple;
-    background:#efefef;
-    &:before {
-      content: '';
-      display: block;
-      background: grey;
-      height: 10px;
-      width: 100%;
-    }
-  }
-
-
-.test { 
-  color: red;       
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
 }
+html {
+  font-size: 10px;
+  font-family: $primary-font;
+  box-sizing: border-box;
+}
+  
+body {
+  &:before {
+    content: '';
+    display: block;
+    background: $blue-grad;
+    height: 15px;
+    width: 100%;
+  }
+}
+
+
+
   

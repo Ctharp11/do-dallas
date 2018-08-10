@@ -1,17 +1,78 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0; }
+
 html {
-  font-size: 10px; }
+  font-size: 10px;
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box; }
 
-body {
-  background: purple;
-  background: #efefef; }
-  body:before {
-    content: '';
-    display: block;
-    background: grey;
-    height: 10px;
-    width: 100%; }
+body:before {
+  content: '';
+  display: block;
+  background: linear-gradient(90deg, #2e9cca 0%, #aaabb8 50%, #29648a 60%, #464866 80%, #25274b 90%);
+  height: 15px;
+  width: 100%; }
 
-.test {
-  color: red; }
+.nav {
+  display: -ms-flexbox;
+  display: flex;
+  height: 11rem;
+  border-bottom: 1px solid rgba(70, 72, 102, 0.3);
+  font-size: 2rem; }
+  .nav-head {
+    width: 25rem;
+    color: white;
+    background-color: #2e9cca; }
+  .nav-head-main {
+    margin-top: 1rem;
+    font-size: 4.2rem;
+    letter-spacing: 4.4px; }
+  .nav-head-sub {
+    font-size: 2.7rem;
+    text-transform: uppercase; }
+  .nav-head-main, .nav-head-sub {
+    text-align: center;
+    font-family: "Bitter", serif; }
+  .nav-container {
+    position: relative;
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    width: 35%;
+    -ms-flex-pack: justify;
+        justify-content: space-between; }
+    .nav-container-item {
+      border-right: 1px solid rgba(70, 72, 102, 0.3);
+      width: 10rem;
+      text-align: center; }
+      .nav-container-item:hover {
+        cursor: pointer; }
+  .nav-search {
+    position: relative;
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
+    display: flex;
+    left: 3rem;
+    width: 20%; }
+  .nav-reg {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    width: 16%;
+    left: 3rem;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center; }
+    .nav-reg-item {
+      width: 10rem;
+      text-align: center; }
+      .nav-reg-item:first-child {
+        border-right: 1px solid rgba(70, 72, 102, 0.4); }
+      .nav-reg-item:hover {
+        cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map*/

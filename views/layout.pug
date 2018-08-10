@@ -1,15 +1,44 @@
 doctype html
 html
     head
-        title='Do Dallas'
+        title='Dine Dallas'
         link(rel='stylesheet', href='/dist/style.css')
-        link(rel='shortcut icon' type="image/png href="/images)
-        //-link(rel="shortcut icon" type="image/png" href="/images/icons/doughnut.png")
+        link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800")
+        link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Bitter:400,700")
+        link(rel="shortcut icon" type="image/png" href="/images/icons/favicon.ico")
         meta(name="viewport" content="width=device-width, initial-scale=1")
-    block header
-      header.top
-        nav.nav
-            p.test Pug source code!
+    body.body
+        block header
+            header
+                nav.nav 
+                    a.nav-head(href="/")
+                        div.nav-head-main dine
+                        div.nav-head-sub  dallas
+                    .nav-container
+                        a.nav-container-item(href='/store') Store
+                        a.nav-container-item(href='/tags') Tags
+                        a.nav-container-item(href='/top') Top
+                        a.nav-container-item(href='/add') Add+
+                        a.nav-container-item(href='/map') Map
+                    input.nav-search(type="text" name="search" placeholder="Search...")
+                    .nav-reg
+                        a.nav-reg-item(href='/register') Register
+                        a.nav-reg-item(href='/register') Log In
+        
+        block messages 
+            if locals.flashes
+                .inner
+                    .flash-messages
+                        - const categories = Object.keys(locals.flashes)
+                        each category in categories
+                            each message in flashes[category]
+                                .flash(class=`flash--${category}`)
+                                    p.flash__text!= message
+                                    button.flash__remove(onClick="this.parentElement.remove()") &times;
+
+        .content
+            block content
+           
         
 
     block scripts
