@@ -8,6 +8,7 @@
         width:25rem;
         color:white;
         background-color:  $blue-4;
+        text-decoration: none;
     }
 
     &-head-main {
@@ -34,9 +35,14 @@
             border-right: 1px solid rgba($secondary-blue, .3);
             width:10rem;
             text-align:center;
+            text-decoration: none;
+            color: black;
+            transition: transform .3s ease;
 
             &:hover {
                 cursor: pointer;
+                transform: translateY(-2px);
+                border-bottom: 2px solid $blue-4;
             }
         }
     }
@@ -46,6 +52,11 @@
         display: flex;
         left: 3rem;
         width: 20%;
+        height: 4rem;
+        margin-top:3.5rem;
+        font-size: 1.8rem;
+        border: none;
+        color: black;
     }
     &-reg {
         position: relative;
@@ -61,9 +72,14 @@
             }
             width:10rem;
             text-align:center;
+            text-decoration: none;
+            color: black;
+            transition: transform .3s ease;
 
             &:hover {
                 cursor: pointer;
+                transform: translateY(-2px);
+                border-bottom: 2px solid $blue-4;
             }
         }
     }

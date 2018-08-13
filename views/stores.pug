@@ -2,6 +2,8 @@ extends layout
 
 include mixins/_storeCard
 block content  
-    each store in stores
-        +storeCard(store)
+    .inner 
+        h2= title
+            each store in stores
+                +storeCard(store)
             
