@@ -1,2 +1,3 @@
 mixin storeCard(store = {}) 
-    div #{store.name}
+    div #{store.name} #{store.description} #{store.tags} #{store.location} #{store.photo}
+    a(href=`/stores/${store.id}/edit`) edit
