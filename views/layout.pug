@@ -23,8 +23,13 @@ html
                         a.nav-container-item(href='/map') Map
                     input.nav-search(type="text" name="search" placeholder="Search...")
                     .nav-reg
-                        a.nav-reg-item(href='/register') Register
-                        a.nav-reg-item(href='/register') Log In
+                        if user
+                            a.nav-reg-item(href='/hearts') Hearts
+                            a.nav-reg-item(href='/logout') Logout
+                            img.avatar(src=user.gravatar + '&d=retro')
+                        else
+                            a.nav-reg-item(href='/register') Register
+                            a.nav-reg-item(href='/login') Log In
         
         block messages 
             if locals.flashes
