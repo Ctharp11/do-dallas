@@ -1,5 +1,5 @@
 mixin storeForm(store = {})
-    form(action=`/add/${store.id || ''}` method="post" enctype="multipart/form-data")
+    form(action=`/add/${store.id || ''}` method="post" class="card" enctype="multipart/form-data")
         label(for="name") Name 
         input(type="text" name="name" value=store.name)
         label(for="description") Description
@@ -17,9 +17,11 @@ mixin storeForm(store = {})
         label(for="lng") Longitude
         input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[1]))
         - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Licensed', '$', '$$', '$$$'] 
-        ul
-            - const tags = store.tags || []
+
+        ul.tags
+         - const tags = store.tags || []
             each choice in choices 
-                input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
-                label(for=choice) #{choice}
+                .tag.tag__choice
+                    input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
+                    label(for=choice) #{choice}
         input(type="submit" value="Save" class="button")

@@ -3,8 +3,6 @@
   padding: 0;
 }
 html {
-  font-size: 10px;
-  font-family: $primary-font;
   box-sizing: border-box;
 }
   
@@ -12,8 +10,8 @@ body {
   &:before {
     content: '';
     display: block;
-    background: $blue-grad;
-    height: 15px;
+    // background: $blue-grad;
+    // height: 15px;
     width: 100%;
   }
 }

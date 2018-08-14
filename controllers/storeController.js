@@ -31,15 +31,17 @@ exports.addStore = (req, res) => {
 exports.upload = multer(multerOptions).single('photo');
 
 exports.resize = async (req, res, next) => {
+    //is there a new file to resize?
     if (!req.file) {
         next();
         return;
     }
     const extension = req.file.mimetype.split('/')[1];
+    //this temp save photo to our req object so it can be used in createStore when we call next
     req.body.photo = `${uuid.v4()}.${extension}`
     const photo = await jimp.read(req.file.buffer);
-    await photo.resize(800, jimp.AUTO);
-    await photo.write(`.public/uploads/${req.body.photo}`);
+    await photo.resize(600, jimp.AUTO);
+    await photo.write(`./public/uploads/${req.body.photo}`);
     next();
 }
 
@@ -61,6 +63,16 @@ exports.updateStore = async (req, res) => {
         new: true,
         runValidators: true,
     }).exec()
-    req.flash('success', `Successfully edited ${store.name}. <a href="/stores/${store.slug}"> View store -> </a>`)
+    req.flash('success', `Successfully edited ${store.name}. <a href="/store/${store.slug}"> View store -> </a>`)
     res.redirect(`/stores/${store.id}/edit`);
+}
+
+exports.getStoreBySlug = async (req, res) => {
+    const store = await Store.findOne({slug: req.params.slug}, function(err, store) {
+        if (!store) { 
+            return next();
+        }
+        return store;
+    }).exec();
+    res.render('store', {title: store.name, store})
 }

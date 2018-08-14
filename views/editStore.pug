@@ -3,4 +3,6 @@ extends layout
 include mixins/_storeForm
 
 block content
-    +storeForm(store)
+    .inner
+        h2= title
+        +storeForm(store)
