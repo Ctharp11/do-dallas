@@ -26,7 +26,8 @@ html
                         if user
                             a.nav-reg-item(href='/hearts') Hearts
                             a.nav-reg-item(href='/logout') Logout
-                            img.avatar(src=user.gravatar + '&d=retro')
+                            a(href='/account')
+                                img.avatar(src=user.gravatar + '&d=retro')
                         else
                             a.nav-reg-item(href='/register') Register
                             a.nav-reg-item(href='/login') Log In
