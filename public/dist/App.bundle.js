@@ -145,11 +145,38 @@ var _autocomplete = __webpack_require__(0);
 
 var _autocomplete2 = _interopRequireDefault(_autocomplete);
 
+var _typeAhead = __webpack_require__(10);
+
+var _typeAhead2 = _interopRequireDefault(_typeAhead);
+
 var _bling = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _autocomplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
+(0, _typeAhead2.default)('test');
+
+/***/ }),
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var typeAhead = function typeAhead(search) {
+    console.log(search);
+};
+
+exports.default = typeAhead;
 
 /***/ })
 /******/ ]);

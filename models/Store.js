@@ -32,8 +32,13 @@ const storeSchema = new mongoose.Schema({
             requires: 'You must supply an address!'
         }
     },
-    photo: String
-})
+    photo: String,
+    author: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: 'You must supply an author'
+    }
+});
 
 storeSchema.pre('save', async function(next) {
     if (!this.isModified('name')) {
@@ -48,6 +53,12 @@ storeSchema.pre('save', async function(next) {
         this.slug = `${this.slug}-${storesWithSlug.length + 1}`
     }
     next();
+});
+
+//Define indexes for faster dropdown search
+storeSchema.index({
+    name: 'text',
+    description: 'text'
 });
 
 storeSchema.statics.getTagsList = function() {

@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 const crypto = require('crypto');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const mail = require('../handlers/mail');
 
 exports.login = passport.authenticate('local', {
     failureRedirect: '/login',
-    failureFlash: 'Failed login!',
+    failureFlash: "Failed login!",
     successRedirect: '/',
     successFlash: 'You are now logged in!'
 })
@@ -22,6 +23,12 @@ exports.isLoggedIn = (req, res, next) => {
         return next();
     }
     req.flash('error', 'You must be logged in!');
+    const requestUrl = req.headers.referer;
+    const loginUrl = `http://${req.headers.host}/login`;
+    if (requestUrl === loginUrl) {
+        res.redirect('back');
+        return;
+    }
     res.redirect('/login');
 }
 
@@ -29,21 +36,24 @@ exports.forgot = async (req, res) => {
     //1) Check if user exists
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-        req.flash('error', 'No user associated with this email!')
+        req.flash('error', 'Check your email for a password reset!')
         res.redirect('back');
     }
-
     //2) Set reset and expiry tokens for user
     user.resetPasswordToken = crypto.randomBytes(20).toString('hex');
     user.resetPasswordExpires = Date.now() + 3600000 //1 hr from now
     await user.save();
-
     //3) Send email with token
     const resetUrl = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
-    req.flash('success', `You have been emailed a password reset link. ${resetUrl}`)
-    res.redirect('back');
-
+    await mail.send({
+        user, 
+        subject: 'Password Reset for Dine Dallas',
+        resetUrl,
+        filename: 'password-reset'
+    })
+    req.flash('success', 'Check your email for a password reset!')
     //4) Redirect to login page
+    res.redirect('/login');
 };
 
 exports.reset = async (req, res) => {
