@@ -4,4 +4,4 @@ import typeAhead from './modules/typeAhead';
 import { $, $$ } from './modules/bling';
 
 autocomplete( $('#address'), $('#lat'), $('#lng') )
-typeAhead('test');
+typeAhead($('.search'));

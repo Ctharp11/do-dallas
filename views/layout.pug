@@ -21,7 +21,10 @@ html
                         a.nav-container-item(href='/top') Top
                         a.nav-container-item(href='/add') Add+
                         a.nav-container-item(href='/map') Map
-                    input.nav-search(type="text" name="search" placeholder="Tacos, beer...")
+                    .search
+                        input.nav-search.search__input(type="text" name="search" placeholder="Tacos, beer...")
+                        .search__results
+
                     .nav-reg
                         if user
                             a.nav-reg-item(href='/hearts') Hearts

@@ -1,0 +1,32 @@
+.search {
+    // position: relative;
+    // width: 100%;
+    // display: flex;
+    &__results {
+      background: white;
+      // border: 1px solid black;
+      // position: absolute;
+      width: 100%;
+      // top: 100%;
+      box-shadow: 3px 3px rgba(0,0,0,0.2);
+      z-index: 5;
+      left: 0;
+    }
+    &__input {
+      font-size: 30px;
+      background: none;
+      outline: 0;
+      border: 0;
+    }
+    &__result {
+      color: black;
+      padding: 10px;
+      display: block;
+      border-bottom: 1px solid black;
+      &--active {
+        background: grey;
+      }
+    }
+  }
+  
+  
