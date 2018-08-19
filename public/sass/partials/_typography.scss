@@ -34,7 +34,7 @@ p {
   position: relative;
   z-index: 2;
   margin:0;
-  font-size: 40px;
+  font-size: 35px;
   z-index: 2;
   line-height:1.1;
   transform: skew(0, -3deg);
@@ -57,8 +57,7 @@ p {
   // inline link inside
   a {
     border-bottom: 0;
-    $yellowa: rgba(yellow,0.8);
-    background-image: linear-gradient(to right, yellow 100%, yellow 50%);
+    background-image: linear-gradient(to right, $yellow 100%, $yellow 50%);
   }
 }
 
