@@ -52,9 +52,7 @@
     margin: 0; }
 
 input, textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #464866; }
+  padding: 10px; }
   input.input--error, textarea.input--error {
     border-color: red; }
 
@@ -125,103 +123,92 @@ body:before {
       padding: 2rem; } }
 
 .nav {
+  width: 100%;
+  -ms-flex-align: center;
+      align-items: center;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: 11rem;
-  border-bottom: 1px solid rgba(70, 72, 102, 0.3);
-  font-size: 2rem; }
-  .nav-head {
-    width: 25rem;
-    color: white;
-    background-color: #2e9cca;
-    text-decoration: none; }
-  .nav-head-main {
-    margin-top: 1rem;
-    font-size: 4.2rem;
-    letter-spacing: 4.4px; }
-  .nav-head-sub {
-    font-size: 2.7rem;
-    text-transform: uppercase; }
-  .nav-head-main, .nav-head-sub {
-    text-align: center;
-    font-family: "Bitter", serif; }
+  font-size: 1.8rem;
+  background-color: #222222; }
+  .nav-head-logo {
+    height: 9rem; }
   .nav-container {
-    position: relative;
     -ms-flex-align: center;
         align-items: center;
     display: -ms-flexbox;
-    display: flex;
-    width: 35%;
-    -ms-flex-pack: justify;
-        justify-content: space-between; }
+    display: flex; }
     .nav-container-item {
-      border-right: 1px solid rgba(70, 72, 102, 0.3);
-      width: 10rem;
+      width: 7rem;
       text-align: center;
-      text-decoration: none;
-      color: black;
+      color: #ffffff;
       transition: transform .3s ease; }
+      .nav-container-item:not(:last-child) {
+        border-right: 1px solid rgba(255, 255, 255, 0.3); }
       .nav-container-item:hover {
         cursor: pointer;
         -ms-transform: translateY(-2px);
             transform: translateY(-2px);
-        border-bottom: 2px solid #2e9cca; }
+        border-bottom: 2px solid #ffffff; }
   .nav-search {
     position: relative;
     -ms-flex-align: center;
         align-items: center;
     display: -ms-flexbox;
     display: flex;
-    left: 3rem;
-    height: 4rem;
-    margin-top: 2.5rem;
-    font-size: 1.8rem;
-    border: none;
-    color: black; }
+    height: 1.5rem;
+    font-size: 2.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    background: none; }
   .nav-reg {
-    position: relative;
     display: -ms-flexbox;
     display: flex;
-    width: 16%;
-    left: 3rem;
     -ms-flex-pack: justify;
         justify-content: space-between;
     -ms-flex-align: center;
         align-items: center; }
+    .nav-reg-star {
+      height: 3rem; }
     .nav-reg-item {
-      width: 10rem;
+      width: 8rem;
       text-align: center;
       text-decoration: none;
-      color: black;
+      color: #ffffff;
       transition: transform .3s ease; }
-      .nav-reg-item:first-child {
-        border-right: 1px solid rgba(70, 72, 102, 0.4); }
+      .nav-reg-item-nound {
+        transition: transform .3s ease;
+        margin: 0 1rem; }
+        .nav-reg-item-nound:hover {
+          cursor: pointer;
+          -ms-transform: translateY(-2px);
+              transform: translateY(-2px); }
       .nav-reg-item:hover {
         cursor: pointer;
         -ms-transform: translateY(-2px);
             transform: translateY(-2px);
-        border-bottom: 2px solid #2e9cca; }
+        border-bottom: 2px solid #ffffff; }
 
-.search__results {
-  background: white;
-  width: 100%;
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
-  z-index: 5;
-  left: 0; }
-
-.search__input {
-  font-size: 30px;
-  background: none;
-  outline: 0;
-  border: 0; }
-
-.search__result {
-  color: black;
-  padding: 10px;
-  display: block;
-  border-bottom: 1px solid black; }
-  .search__result--active {
-    background: grey; }
+.search {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex; }
+  .search__results {
+    background: white;
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.2);
+    z-index: 5; }
+  .search__result {
+    color: black;
+    padding: 10px;
+    display: block;
+    border-bottom: 1px solid black; }
+    .search__result--active {
+      background: grey; }
 
 .single {
   margin-bottom: 4rem; }
@@ -420,7 +407,8 @@ html {
 
 body {
   font-size: 1.5rem;
-  color: #303030; }
+  color: #303030;
+  font-family: "Bitter", serif; }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 5rem;
@@ -431,9 +419,6 @@ h1, h2, h3, h4, h5, h6 {
 a {
   text-decoration: none;
   color: #303030; }
-
-p a {
-  border-bottom: 2px solid yellow; }
 
 p {
   line-height: 2;

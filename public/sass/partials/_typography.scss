@@ -5,6 +5,7 @@ html {
 body {
   font-size:1.5rem;
   color:$black;
+  font-family: $font-head;
 }
 
 h1, h2, h3, h4, h5, h6, {
@@ -20,7 +21,7 @@ a {
 }
 
 p a {
-  border-bottom: 2px solid yellow;
+  // border-bottom: 2px solid yellow;
 }
 
 p {

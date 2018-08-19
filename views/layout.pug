@@ -1,20 +1,19 @@
 doctype html
 html
     head
-        title='Dine Dallas'
+        title='Texas Food Fight'
         link(rel='stylesheet', href='/dist/style.css')
         link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,800")
         link(href="https://fonts.googleapis.com/css?family=Oswald:400,500,600" rel="stylesheet")
         link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Bitter:400,700")
-        link(rel="shortcut icon" type="image/png" href="/images/icons/favicon.ico")
+        link(rel="shortcut icon" type="image/png" href="/images/icons/favicon.png")
         meta(name="viewport" content="width=device-width, initial-scale=1")
     body.body
         block header
             header
                 nav.nav 
                     a.nav-head(href="/")
-                        div.nav-head-main dine
-                        div.nav-head-sub  dallas
+                        img.nav-head-logo(src="/images/photos/tx_ff_logo5.svg")
                     .nav-container
                         a.nav-container-item(href='/stores') Stores
                         a.nav-container-item(href='/tags') Tags
@@ -27,9 +26,10 @@ html
 
                     .nav-reg
                         if user
-                            a.nav-reg-item(href='/hearts') Hearts
+                            a.nav-reg-item-nound(href='/hearts') 
+                                img.nav-reg-star(src="/images/icons/tx_ff_star.svg")
                             a.nav-reg-item(href='/logout') Logout
-                            a(href='/account')
+                            a.nav-reg-item-nound(href='/account')
                                 img.avatar(src=user.gravatar + '&d=retro')
                         else
                             a.nav-reg-item(href='/register') Register
