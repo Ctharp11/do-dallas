@@ -21,16 +21,16 @@
         position: relative;
         z-index: 2;
         & + label {
-          background: $secondary-blue;
+          background: $blue-3;
           padding: 1rem 1rem 1rem 4rem;
         }
         &:checked + label {
-          background: yellow;
+          background: $yellow ;
         }
       }
     }
     &__link {
-      background:yellow;
+      background: $yellow ;
       color:$black;
       display: flex;
       padding-left: 10px;
