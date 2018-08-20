@@ -15,8 +15,9 @@ const multerOptions = {
     }
 }
 
-exports.homePage = (req, res) => {
-    res.render('index')
+exports.homePage = async (req, res) => {
+    const stores = await Store.find();
+    res.render('index', {title: 'Stores', stores})
 }
 
 exports.getStore = async (req, res) => {

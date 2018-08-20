@@ -5,11 +5,12 @@
     justify-content: space-around;
     height: 11rem;
     font-size: 1.8rem;
-    background-color: $dar-grey;
+    // background-color: $dar-grey;
 
     &-head {
         &-logo {
-            height: 9rem;
+            margin-top:4rem;
+            height: 13rem;
         }
     }
 
@@ -19,17 +20,19 @@
 
         &-item {
             &:not(:last-child) {
-                border-right: 1px solid rgba($white, .3);
+                // border-right: 1px solid rgba($white, .3);
+                border-right: 1px solid rgba($black, .3);
             }
             width:7rem;
             text-align:center;
-            color: $white;
+            // color: black;
             transition: transform .3s ease;
 
             &:hover {
                 cursor: pointer;
                 transform: translateY(-2px);
-                border-bottom: 2px solid $white;
+                // border-bottom: 2px solid $white;
+                border-bottom: 2px solid $black;
             }
         }
     }
@@ -38,10 +41,11 @@
         position: relative;
         align-items: center;
         display: flex;
-        height: 1.5rem;
+        height: 1.2rem;
         font-size: 2.2rem;
-        border: 1px solid rgba($white, .3);
-        color: $white;
+        // border-bottom: 2px solid $white;
+        border: 1px solid $black;
+        // color: $white;
         background: none;
     }
     &-reg {
@@ -66,13 +70,14 @@
             width:8rem;
             text-align:center;
             text-decoration: none;
-            color: $white;
+            // color: $white;
             transition: transform .3s ease;
 
             &:hover {
                 cursor: pointer;
                 transform: translateY(-2px);
-                border-bottom: 2px solid $white;
+                // border-bottom: 2px solid $white;
+                border-bottom: 2px solid $black;
             }
         }
     }

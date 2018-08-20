@@ -1,5 +1,5 @@
 mixin storeForm(store = {})
-    form(action=`/add/${store.id || ''}` method="post" class="card" enctype="multipart/form-data")
+    form(action=`/add/${store.id || ''}` method="post" class="card" autocomplete="off" enctype="multipart/form-data")
         label(for="name") Name 
         input(type="text" name="name" value=store.name)
         label(for="description") Description
@@ -11,6 +11,7 @@ mixin storeForm(store = {})
             img(src=`/uploads/${store.photo}`, alt=`${store.name}`)
         //- location
         label(for="address") Address
+        div.address-error
         input(type="text" id="address" name="location[address]" value=(store.location &&store.location.address))
         label(for="lat") Latitude
         input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[0]))

@@ -1,1 +1,15 @@
 extends layout
+
+include mixins/_storeCard
+
+block content
+    .subhead Which Texas city has the supreme cuisine? 
+
+    .inner
+        div.ratings City Ratings
+
+        h2 All Restaurants
+        .stores
+            each store in stores
+                +storeCard(store)
+            

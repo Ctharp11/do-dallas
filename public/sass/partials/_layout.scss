@@ -6,22 +6,23 @@ html {
   box-sizing: border-box;
 }
   
-body {
-  &:before {
-    content: '';
-    display: block;
-    // background: $blue-grad;
-    // height: 15px;
-    width: 100%;
-  }
-}
-
 .inner {
   max-width:900px;
-  margin: 0 auto;
+  margin: 4rem auto;
   @media all and (max-width: 900px) {
     padding: 2rem;
   }
+}
+
+.subhead {
+  text-align: center;
+  margin: -3rem auto 3rem;
+  height: 5rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  border-bottom: 3px solid $yellow;
+  width: 50%;
+  font-weight: 600;
 }
 
 
