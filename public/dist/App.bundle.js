@@ -932,7 +932,7 @@ function autocomplete(input, latInput, lngInput) {
 
     var options = {
         componentRestrictions: { country: "us" },
-        types: ['establishment'],
+        types: ["establishment"],
         bounds: defaultBounds,
         strictBounds: true
     };
@@ -941,9 +941,12 @@ function autocomplete(input, latInput, lngInput) {
 
     dropdown.addListener('place_changed', function () {
         var place = dropdown.getPlace();
+        console.log(place);
         if (!place.adr_address.includes('<span class="region">TX</span>')) {
             var error = document.querySelector('.address-error');
             error.innerHTML = 'That\'s not a place in Texas! Try again!';
+            latInput.value = '';
+            lngInput.value = '';
             return;
         }
         latInput.value = place.geometry.location.lat();

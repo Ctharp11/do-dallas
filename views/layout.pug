@@ -47,7 +47,14 @@ html
                                     button.flash__remove(onClick="this.parentElement.remove()") &times;
 
         .content
-            block content        
+            block content    
+
+        .footer    
+            div.footer-flex
+                img.footer-img(src="/images/photos/just_tx.png") 
+                div Made by a Texan for Texans 
+                img.footer-img(src="/images/photos/just_tx.png")
+            div Comments? Feedback? Feel free to reach out on Twitter @ctharp1988
 
     block scripts
       script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
