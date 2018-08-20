@@ -941,14 +941,20 @@ function autocomplete(input, latInput, lngInput) {
 
     dropdown.addListener('place_changed', function () {
         var place = dropdown.getPlace();
-        console.log(place);
+        var patt = new RegExp('<span class="locality">(.*?)<\/span>');
+        var placeFull = place.adr_address;
+        var result = patt.exec(placeFull);
+        var city = document.querySelector('.city');
+        var error = document.querySelector('.address-error');
+        error.value = '';
+        city.value = '';
         if (!place.adr_address.includes('<span class="region">TX</span>')) {
-            var error = document.querySelector('.address-error');
             error.innerHTML = 'That\'s not a place in Texas! Try again!';
             latInput.value = '';
             lngInput.value = '';
             return;
         }
+        city.value = result[1];
         latInput.value = place.geometry.location.lat();
         lngInput.value = place.geometry.location.lng();
     });

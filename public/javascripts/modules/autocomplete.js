@@ -19,14 +19,20 @@ function autocomplete(input, latInput, lngInput) {
     
     dropdown.addListener('place_changed', () => {
         const place = dropdown.getPlace();
-        console.log(place);
+        const patt = new RegExp('<span class="locality">(.*?)<\/span>');
+        const placeFull = place.adr_address;
+        const result = patt.exec(placeFull);
+        const city = document.querySelector('.city');
+        const error = document.querySelector('.address-error');
+        error.value= '';
+        city.value = '';
         if (!place.adr_address.includes('<span class="region">TX</span>')) {
-            const error = document.querySelector('.address-error')
-            error.innerHTML = 'That\'s not a place in Texas! Try again!'
+            error.innerHTML = 'That\'s not a place in Texas! Try again!';
             latInput.value = '';
             lngInput.value = '';
             return;
         }
+        city.value = result[1];
         latInput.value = place.geometry.location.lat();
         lngInput.value = place.geometry.location.lng();
     })

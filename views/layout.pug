@@ -9,45 +9,48 @@ html
         link(rel="shortcut icon" type="image/png" href="/images/icons/favicon.png")
         meta(name="viewport" content="width=device-width, initial-scale=1")
     body.body
-        block header
-            header
-                nav.nav 
-                    a.nav-head(href="/")
-                        img.nav-head-logo(src="/images/photos/tx_ff_logo_blk.png") 
-                    .nav-container
-                        a.nav-container-item(href='/stores') Stores
-                        a.nav-container-item(href='/tags') Tags
-                        a.nav-container-item(href='/top') Top
-                        a.nav-container-item(href='/add') Add+
-                        a.nav-container-item(href='/map') Map
-                    .search
-                        input.nav-search.search__input(type="text" name="search" placeholder="Tacos, beer...")
-                        .search__results
+        div.wrapper
+            block header
+                header
+                    nav.nav 
+                        a.nav-head(href="/")
+                            img.nav-head-logo(src="/images/photos/tx_ff_logo_blk.png") 
+                        .nav-container
+                            a.nav-container-item(href='/stores') Stores
+                            a.nav-container-item(href='/tags') Tags
+                            a.nav-container-item(href='/top') Top
+                            a.nav-container-item(href='/add') Add+
+                            a.nav-container-item(href='/map') Map
+                        .search
+                            input.nav-search.search__input(type="text" name="search" placeholder="Tacos, beer...")
+                            .search__results
 
-                    .nav-reg
-                        if user
-                            a.nav-reg-item-nound(href='/hearts') 
-                                img.nav-reg-star(src="/images/icons/tx_ff_star.svg")
-                            a.nav-reg-item(href='/logout') Logout
-                            a.nav-reg-item-nound(href='/account')
-                                img.avatar(src=user.gravatar + '&d=retro')
-                        else
-                            a.nav-reg-item(href='/register') Register
-                            a.nav-reg-item(href='/login') Log In
-        
-        block messages 
-            if locals.flashes
-                .inner
-                    .flash-messages
-                        - const categories = Object.keys(locals.flashes)
-                        each category in categories
-                            each message in flashes[category]
-                                .flash(class=`flash--${category}`)
-                                    p.flash__text!= message
-                                    button.flash__remove(onClick="this.parentElement.remove()") &times;
+                        .nav-reg
+                            if user
+                                a.nav-reg-item-nound(href='/hearts') 
+                                    img.nav-reg-star(src="/images/icons/tx_ff_star.svg")
+                                a.nav-reg-item(href='/logout') Logout
+                                a.nav-reg-item-nound(href='/account')
+                                    img.avatar(src=user.gravatar + '&d=retro')
+                            else
+                                a.nav-reg-item(href='/register') Register
+                                a.nav-reg-item(href='/login') Log In
+            
+            block messages 
+                if locals.flashes
+                    .inner
+                        .flash-messages
+                            - const categories = Object.keys(locals.flashes)
+                            each category in categories
+                                each message in flashes[category]
+                                    .flash(class=`flash--${category}`)
+                                        p.flash__text!= message
+                                        button.flash__remove(onClick="this.parentElement.remove()") &times;
 
-        .content
-            block content    
+            .content
+                block content   
+
+        div.push 
 
         .footer    
             div.footer-flex
