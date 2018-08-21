@@ -12,7 +12,7 @@ const storeSchema = new mongoose.Schema({
     description: {
         type: String,
         trim: true,
-        required: 'Please enter a store name!'
+        required: 'Please enter a description!'
     },
     tags: [String],
     created: {
@@ -25,13 +25,11 @@ const storeSchema = new mongoose.Schema({
             default: 'Point'
         },
         coordinates: [{
-            type: Number,
-            required: 'You must supply coordinates!',
-            unique : true
+            type: Number
         }],
         address: {
             type: String,
-            requires: 'You must supply an address!'
+            required: 'Please enter an address!'
         }
     },
     photo: String,
@@ -40,8 +38,7 @@ const storeSchema = new mongoose.Schema({
         ref: 'User',
     },
     city: {
-        type: String,
-        required: 'You must supply a city'
+        type: String
     }
 });
 

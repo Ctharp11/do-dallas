@@ -30,7 +30,7 @@ router.get('/register', userController.registerForm);
 router.post('/register', 
     userController.validateRegister,
     userController.validatePassword,
-    userController.register,
+    catchErrors(userController.register),
     authController.login
 );
 router.get('/logout', authController.logout);

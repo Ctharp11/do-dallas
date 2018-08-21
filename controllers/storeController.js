@@ -54,15 +54,21 @@ exports.resize = async (req, res, next) => {
 
 exports.createStore = async (req, res) => {
     req.body.author = req.user._id;
-    const store = await (new Store(req.body)).save();
-    const errors = req.validationErrors();
-    console.log(errors)
-    if (errors) {
-        req.flash('error', 'That store already exists!');
-        res.redirect('back');
+    try {
+        const store = await (new Store(req.body)).save(); 
+        req.flash('success', `Successfully created ${store.name}. Care to leave a review?`);
+        res.redirect(`/store/${store.slug}`);
+        return;
     }
-    req.flash('success', `Successfully created ${store.name}. Care to leave a review?`)
-    res.redirect(`/store/${store.slug}`)
+    catch(err) {
+        if (err.code === 11000) {
+           req.flash('error', "This store has already been added! Click here to leave a review.");
+           res.redirect('back'); 
+        }
+        req.flash('error', "Sorry, there was an error!");
+        res.redirect('back'); 
+        return;
+    }
 };
 
 const confirmOwner = (store, user) => {
