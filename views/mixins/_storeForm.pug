@@ -9,16 +9,26 @@ mixin storeForm(store = {})
         input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg" )
         if (store.photo)
             img(src=`/uploads/${store.photo}`, alt=`${store.name}`)
+        
+        //-recommend
+        //- label.store-recommend(for="recommend" value=) Do you recommend this place? 
+        //- div.store-recommend-buttons
+        //-     button.store-recommend-button(type="button" value='Heck yeah!' data-text=1) Heck yeah! (+1 vote)
+        //-     button.store-recommend-button(type="button" value='Ugggh, nope' data-text=-1) Ugggh, nope (-1 vote)
+        //- input.store-recommend-value(type="text" placeholder="My recommendation")
+        //- input.store-recommend-real(type="text" name="recommend")
+
         //- location
         label(for="address") Address
         div.address-error
         input(type="text" id="address" name="location[address]" value=(store.location &&store.location.address))
-        label(for="city") City
-        input.city(type="text" name="city")
-        label(for="lat") Latitude
-        input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[0]))
-        label(for="lng") Longitude
-        input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[1]))
+        div.form-flex
+            label.hidden(for="city") City
+            input.city.hidden(type="text" name="city")
+            label.hidden(for="lat") Latitude
+            input.hidden(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[0]))
+            label.hidden(for="lng") Longitude
+            input.hidden(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[1]))
         - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Alcohol'] 
 
         ul.tags
@@ -27,4 +37,4 @@ mixin storeForm(store = {})
                 .tag.tag__choice
                     input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
                     label(for=choice) #{choice}
-        input(type="submit" value="Save" class="button")
+        input(type="submit" value="Save Restaurant" class="button")

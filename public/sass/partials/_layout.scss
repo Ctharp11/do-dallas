@@ -1,9 +1,9 @@
 *, *:before, *:after {
   margin: 0;
   padding: 0;
+  box-sizing:border-box 
 }
 html, body {
-  box-sizing: border-box;
   height: 100%;
 }
   
@@ -31,11 +31,11 @@ html, body {
 
   /* Equal to height of footer */
   /* But also accounting for potential margin-bottom of last child */
-  margin-bottom: -80px;
+  margin-bottom: -100px;
 }
 .footer,
 .push {
-  height: 80px;
+  height: 100px;
 }
 
 

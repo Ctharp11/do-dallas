@@ -2,6 +2,19 @@ function autocomplete(input, latInput, lngInput) {
     if(!input) {
         return
     }
+
+    const recommendBtn = document.getElementsByClassName('store-recommend-button');
+    for(var i = 0; i < recommendBtn.length; i++) {
+        recommendBtn[i].on('click', function() {
+            const attr = this.getAttribute('data-text');
+            const recommend = document.querySelector('.store-recommend-value');
+            const vote = document.querySelector('.store-recommend-real');
+            recommend.value = this.value;
+            vote.value = Number(attr);
+            recommend.setAttribute('data-text', attr);
+        })
+    };
+
     
     var defaultBounds = new google.maps.LatLngBounds(
         new google.maps.LatLng(25.841563, -97.39572),

@@ -43,7 +43,6 @@ exports.validatePassword = (req, res, next) => {
     const passValidate = schema.validate(req.body.password, { list: true });
     
     if(passValidate.length > 0) {
-        console.log(passValidate);
         req.flash('error', 'Your password must be at least 8 characters long, have at least one uppercase letter, at least one number, and no spaces.');
         res.render('register', {title: 'Register', body: req.body, flashes: req.flash() });
         return;

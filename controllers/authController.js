@@ -4,12 +4,12 @@ const crypto = require('crypto');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
 const mail = require('../handlers/mail');
+const passwordValidator = require('password-validator');
 
 exports.login = passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: "Failed login!",
-    successRedirect: '/',
-    successFlash: 'You are now logged in!'
+    successRedirect: '/'
 })
 
 exports.logout = (req, res) => {
@@ -73,7 +73,25 @@ exports.confirmedPasswords = (req, res, next) => {
         return next();
     }
     req.flash('error', "Your passwords don't match!");
-    res.redirect('back');
+    res.render('reset', { flashes: req.flash() });
+    return;
+}
+
+exports.passwordValidation = (req, res, next) => {
+    var schema = new passwordValidator();
+    schema.is().min(8)                                
+    schema.has().uppercase()  
+    schema.has().not().spaces() 
+    schema.has().digits() 
+
+    const passValidate = schema.validate(req.body.password, { list: true });
+    
+    if(passValidate.length > 0) {
+        req.flash('error', 'Your password must be at least 8 characters long, have at least one uppercase letter, at least one number, and no spaces.');
+        res.render('reset', { flashes: req.flash() });
+        return;
+    }
+    next();
 }
 
 exports.update = async (req, res) => {

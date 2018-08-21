@@ -1,7 +1,8 @@
 input, textarea {
     width:100%;
-    padding:10px;
+    padding:1rem 0;
     border: 1px solid $black;
+    font-size: 1.6rem;
     &.input {
       &--error {
         border-color: $red;
@@ -26,7 +27,6 @@ input, textarea {
     & + .form {
       margin-top: 4rem;
     }
-    // I know this isn't bem but meh
     h2 {
       margin: 0;
       font-size: 2rem;
@@ -34,5 +34,19 @@ input, textarea {
       margin-bottom: 2rem;
       border-bottom: 1px solid $secondary-blue;
     }
+  }
+
+  .form-flex {
+    display: flex;
+    margin-top: 2rem;
+  
+    & > input {
+      margin: .5rem;
+    }
+  }
+
+  .password-text {
+    font-size: 1.4rem;
+    font-style: italic;
   }
   

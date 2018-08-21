@@ -928,6 +928,18 @@ function autocomplete(input, latInput, lngInput) {
         return;
     }
 
+    var recommendBtn = document.getElementsByClassName('store-recommend-button');
+    for (var i = 0; i < recommendBtn.length; i++) {
+        recommendBtn[i].on('click', function () {
+            var attr = this.getAttribute('data-text');
+            var recommend = document.querySelector('.store-recommend-value');
+            var vote = document.querySelector('.store-recommend-real');
+            recommend.value = this.value;
+            vote.value = Number(attr);
+            recommend.setAttribute('data-text', attr);
+        });
+    };
+
     var defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(25.841563, -97.39572), new google.maps.LatLng(36.493861, -101.043184));
 
     var options = {

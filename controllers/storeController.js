@@ -17,16 +17,22 @@ const multerOptions = {
 
 exports.homePage = async (req, res) => {
     const stores = await Store.find();
-    res.render('index', {title: 'Stores', stores})
+    res.render('index', {title: 'Restaurants', stores})
 }
 
 exports.getStore = async (req, res) => {
-    const stores = await Store.find();
-    res.render('stores', {title: 'Stores', stores});
+    // const stores = await Store.find();
+    const tag = req.params.tag;
+    const tagQuery = tag || { $exists: true };
+    const tagsPromise = Store.getTagsList();
+    const storePromise = Store.find({tags: tagQuery});
+    const [ tags, stores] = await Promise.all([tagsPromise, storePromise]);    
+    res.render('stores', {title: 'Restaurants', tags, tag, stores})
+    // res.render('stores', {title: 'Restaurants', stores});
 }
 
 exports.addStore = (req, res) => {
-    res.render('editStore', {'title': 'Add Store'})
+    res.render('editStore', {'title': 'Add Restaurant'})
 };
 
 exports.upload = multer(multerOptions).single('photo');
@@ -49,7 +55,13 @@ exports.resize = async (req, res, next) => {
 exports.createStore = async (req, res) => {
     req.body.author = req.user._id;
     const store = await (new Store(req.body)).save();
-    req.flash('succes', `Successfully created ${store.name}. Care to leave a review?`)
+    const errors = req.validationErrors();
+    console.log(errors)
+    if (errors) {
+        req.flash('error', 'That store already exists!');
+        res.redirect('back');
+    }
+    req.flash('success', `Successfully created ${store.name}. Care to leave a review?`)
     res.redirect(`/store/${store.slug}`)
 };
 

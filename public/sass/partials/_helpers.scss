@@ -5,10 +5,18 @@
   
   .button {
     border: 0;
-    background: $yellow ;
+    border-right: 1px solid $yellow;
+    background: $yellow;
     color: $black;
-    font-family: 'Panama';
+    font-size:1.8rem;
+    font-family: 'Oswald';
     font-weight: 600;
+    margin-top: 2px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
   }
   
   .avatar {
@@ -19,14 +27,14 @@
   }
   
   .card {
-    background: white;
+    background: $white;
     padding: 5rem;
-    box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 10px rgba($black, .15);
   }
   
   pre.error {
     padding: 5rem;
-    background: white;
+    background: $white;
     line-height: 3;
     white-space: pre-line;
   }
