@@ -26,8 +26,9 @@ html
 
                         .nav-reg
                             if user
-                                a.nav-reg-item-nound(href='/hearts') 
+                                a.nav-reg-item-nound(href='/stars') 
                                     img.nav-reg-star(src="/images/icons/tx_ff_star.svg")
+                                    p.nav-reg-numstars.star-count #{user.stars && user.stars.length} 
                                 a.nav-reg-item(href='/logout') Logout
                                 a.nav-reg-item-nound(href='/account')
                                     img.avatar(src=user.gravatar + '&d=retro')

@@ -242,14 +242,26 @@ html, body {
         justify-content: space-between;
     -ms-flex-align: center;
         align-items: center; }
+    .nav-reg-numstars {
+      position: absolute;
+      color: #ffffff;
+      text-align: center;
+      font-size: 1.4rem;
+      top: -1.3rem;
+      left: -2rem; }
     .nav-reg-star {
-      height: 3rem; }
+      position: absolute;
+      height: 5rem;
+      left: -4rem;
+      top: -2.5rem; }
     .nav-reg-item {
       width: 8rem;
+      margin: 0 .5rem;
       text-align: center;
       text-decoration: none;
       transition: transform .3s ease; }
       .nav-reg-item-nound {
+        position: relative;
         transition: transform .3s ease;
         margin: 0 1rem; }
         .nav-reg-item-nound:hover {
@@ -347,6 +359,52 @@ html, body {
       .single__location {
         margin-right: 0; } }
 
+.star__button {
+  border: none;
+  border: 0;
+  outline: 0;
+  position: relative;
+  margin-right: 2rem;
+  background: none; }
+  .star__button:after {
+    content: '\1F31F';
+    font-size: 20px;
+    position: absolute;
+    opacity: 0;
+    top: 0; }
+  .star__button svg {
+    width: 25px;
+    fill: white; }
+  .star__button--starred svg {
+    width: 28px;
+    fill: #ffc200 !important;
+    border: 1px solid #ffc200;
+    background-color: #ffc200; }
+  .star__button--starred svg path {
+    fill: #ffc200 !important; }
+  .star__button--starred svg text {
+    fill: #ffc200 !important; }
+  .star__button--float:after {
+    animation: fly 2.5s 1 ease-out; }
+
+@keyframes fly {
+  0% {
+    transform: translateY(0);
+    left: 0;
+    opacity: 1; }
+  20% {
+    left: 20px; }
+  40% {
+    left: -20px; }
+  60% {
+    left: 20px; }
+  80% {
+    left: -20px; }
+  100% {
+    transform: translateY(-400px);
+    opacity: 0;
+    left: 20px; } }
+
 .stores {
   display: -ms-flexbox;
   display: flex;
@@ -362,6 +420,13 @@ html, body {
   box-shadow: 3px 3px #303030; }
   .store--wide {
     width: 100%; }
+  .store__starbtn {
+    background: white;
+    border: none;
+    width: 3rem;
+    margin-right: 2rem; }
+    .store__starbtn:focus {
+      outline: 0; }
   .store-recommend {
     -ms-flex-align: center;
         align-items: center;
@@ -418,19 +483,21 @@ html, body {
   display: -ms-flexbox;
   display: flex; }
 
-.store__action svg {
-  width: 25px;
-  fill: white; }
-
-.store__action--edit a {
-  border-bottom: 0;
-  color: #ffffff; }
-
-.store__action--icons {
-  height: 2.5rem;
-  margin-right: 2rem; }
-  .store__action--icons:hover {
-    cursor: pointer; }
+.store__action {
+  font-size: 10px; }
+  .store__action svg {
+    width: 25px;
+    fill: white; }
+    .store__action svg:hover {
+      cursor: pointer; }
+  .store__action--edit a {
+    border-bottom: 0;
+    color: #ffffff; }
+  .store__action--icons {
+    height: 2.5rem;
+    margin-right: 2rem; }
+    .store__action--icons:hover {
+      cursor: pointer; }
 
 .store__hero {
   height: 15rem;

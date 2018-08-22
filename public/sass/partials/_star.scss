@@ -1,0 +1,59 @@
+.star {
+    &__button {
+        border: none;
+        border: 0;
+        outline: 0;
+        position: relative;
+        margin-right: 2rem;
+        background: none;
+      &:after {
+        content: '\1F31F';
+        
+        font-size: 20px;
+        position: absolute;
+        opacity: 0;
+        top: 0;
+      }
+      svg {
+        width: 25px;
+        fill: white;
+      }
+      &--starred {
+        svg {
+            width: 28px;
+            fill: #ffc200 !important;
+            border: 1px solid #ffc200;
+            background-color: #ffc200;
+        }
+        svg path {
+            fill: #ffc200 !important;
+        }
+        svg text {
+            fill: #ffc200 !important;
+        }
+      }
+      &--float {
+        &:after {
+          animation: fly 2.5s 1 ease-out;
+        }
+      }
+    }
+  }
+  
+  @keyframes fly {
+    0% {
+      transform: translateY(0);
+      left: 0;
+      opacity: 1;
+    }
+    20% { left: 20px; }
+    40% { left: -20px; }
+    60% { left: 20px; }
+    80% { left: -20px; }
+    100% {
+      transform: translateY(-400px);
+      opacity: 0;
+      left: 20px;
+    }
+  }
+  

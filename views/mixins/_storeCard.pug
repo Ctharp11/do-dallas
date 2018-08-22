@@ -6,9 +6,14 @@ mixin storeCard(store = {})
                 a.store__hero--title(href=`/store/${store.slug}`) #{store.name}
         .store__details
             .store__actions
-                .store__action.store__action--heart
-                    img.store__action--icons(src="/images/icons/star_empty.png")
-                    img.store__action--icons(src="/images/icons/comments.png")
+                img.store__action--icons(src="/images/icons/comments.png")
+                if user 
+                    .store__action.store__action--star
+                        form.star(method="post" action=`/api/store/${store.id}/star`)
+                            - const starStrings = user.stars.map(star => star.toString())
+                            - const starClass = starStrings.includes(store._id.toString()) ? 'star__button--starred' : ''                         
+                            button.star__button(type="submit" name="stars" class=starClass)
+                                != h.icon('star')
                 if user && store.author.equals(user._id)
                     .store__action.store__action--edit
                         a(href=`stores/${store.id}/edit`) 

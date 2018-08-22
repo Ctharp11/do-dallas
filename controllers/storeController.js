@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Store = mongoose.model('Store');
+const User = mongoose.model('User');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
@@ -144,4 +145,18 @@ exports.mapStores = async (req, res) => {
 
 exports.mapPage = (req, res) => {
     res.render('map')
+}
+
+exports.starStore = async (req, res) => {
+    const stars = req.user.stars.map(obj => obj.toString());
+    //checking if user has already hearted a store 
+    //$pull removes the heart $addToSet adds the heart only once (wont duplicate stars like $push would)
+    const operator = stars.includes(req.params.id) ? '$pull' : '$addToSet';
+    const user = await User
+        .findByIdAndUpdate(req.user._id,
+            { [operator]: { stars: req.params.id }},
+            //returns the updated user
+            { new: true}
+        );
+    res.json(user);
 }
