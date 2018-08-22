@@ -35,7 +35,7 @@ router.post('/register',
 );
 router.get('/logout', authController.logout);
 router.post('/login', authController.login);
-router.get('/account', userController.account);
+router.get('/account', catchErrors(userController.account));
 router.post('/account', catchErrors(userController.updateAccount));
 router.post('/account/forgot', catchErrors(authController.forgot));
 router.get('/account/reset/:token', catchErrors(authController.reset));
@@ -44,8 +44,11 @@ router.post('/account/reset/:token',
     authController.passwordValidation,
     catchErrors(authController.update)
 );
+router.get('/map', storeController.mapPage);
 
+//APIs
 router.get('/api/search/', catchErrors(storeController.searchStores));
+router.get('/api/stores/near', catchErrors(storeController.mapStores));
 
 
 module.exports = router;

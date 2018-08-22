@@ -9,11 +9,11 @@
   border: 1px solid $black;
   margin: 1.25em 0 0 1.25em;
   width: calc(48% - 1.25em);
-  height: 30rem;
   box-shadow: 3px 3px $black;
   &--wide {
     width: 100%;
   }
+  
   &-recommend {
     align-items: center;
     display: flex;
@@ -66,6 +66,12 @@
       margin-bottom: 0;
     }
   }
+
+  &-address {
+    font-size: 1.4rem;
+    font-style: italic;
+    padding-bottom: 2rem;
+  }
   @media all and (max-width: 850px) {
     width: calc(50% - 1.25em);
   }
@@ -75,15 +81,9 @@
 }
 
 .store__actions {
-  position: relative;
   z-index: 2;
-  margin-bottom: 50px;
-  padding-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   display: flex;
-  color: white;
-  align-items: center;
-  justify-content: space-around;
 }
 
 .store__action {
@@ -98,10 +98,19 @@
 
     }
   }
+
+  &--icons {
+    height: 2.5rem;
+    margin-right: 2rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 
 .store__hero {
+  height: 15rem;
   position: relative;
   padding: 0 10px 0 10px;
   text-align: right;
@@ -126,5 +135,10 @@
     left: 0;
     object-fit: cover;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+  }
+
+  &--title {
+    position: relative;
+    top: 10rem;
   }
 }

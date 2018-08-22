@@ -24,11 +24,11 @@ mixin storeForm(store = {})
         input(type="text" id="address" name="location[address]" value=(store.location &&store.location.address))
         div.form-flex
             label.hidden(for="city") City
-            input.city.hidden(type="text" name="city")
+            input.city.hidden(type="text" name="city" value=store.city)
             label.hidden(for="lat") Latitude
-            input.hidden(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[0]))
+            input.hidden(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]))
             label.hidden(for="lng") Longitude
-            input.hidden(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[1]))
+            input.hidden(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]))
         - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Alcohol'] 
 
         ul.tags

@@ -14,7 +14,10 @@ const storeSchema = new mongoose.Schema({
         trim: true,
         required: 'Please enter a description!'
     },
-    tags: [String],
+    tags: {
+        type: [String],
+        required: 'Please add at least one tag!'
+    },
     created: {
         type: Date,
         default: Date.now()
@@ -32,7 +35,10 @@ const storeSchema = new mongoose.Schema({
             required: 'Please enter an address!'
         }
     },
-    photo: String,
+    photo: {
+        type: String,
+        required: 'Please add a photo!'
+    },
     author: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
@@ -57,11 +63,22 @@ storeSchema.pre('save', async function(next) {
     next();
 });
 
-//Define indexes for faster dropdown search
+//indexes for faster dropdown search
 storeSchema.index({
     name: 'text',
-    description: 'text'
+    description: 'text',
+    city: 'text'
 });
+
+//index for geospatial
+storeSchema.index( {location: '2dsphere'} );
+
+//index for user account info ---- Need author to get stores back and personal reviews
+// storeSchema.index({
+//     author: 'text',
+//     description: 'text',
+//     city: 'text'
+// });
 
 storeSchema.statics.getTagsList = function() {
     return this.aggregate([

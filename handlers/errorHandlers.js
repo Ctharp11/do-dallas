@@ -22,8 +22,6 @@ exports.catchErrors = (fn) => {
   */
   
   exports.flashValidationErrors = (err, req, res, next) => {
-    console.log(err);
-
     if(err.message === 'A user with the given username is already registered') {
       req.flash('error', err.message);
       res.redirect('back');
@@ -42,7 +40,6 @@ exports.catchErrors = (fn) => {
     In development we show good error messages so if we hit a syntax error or any other previously un-handled error, we can show good info on what happened
   */
   exports.developmentErrors = (err, req, res, next) => {
-    console.log('development', err)
     err.stack = err.stack || '';
     const errorDetails = {
       message: err.message,

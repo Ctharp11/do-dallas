@@ -1,8 +1,23 @@
 extends layout
 
+include mixins/_storeCard
+
 block content 
     .inner
-        h2= title
+        pre= stores
+        h2 Your Account
+
+        hr
+
+        h2.account-h2 Your Stores
+
+        hr
+
+        h2.account-h2 Your Reviews
+
+        hr
+
+        h2.account-h2 Edit Your Info
         form.form(action="/account" method="post")
             label(for="name") Name
             input(type="text" name="name" value=user.name)

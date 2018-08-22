@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const passwordValidator = require('password-validator');
 const User = mongoose.model('User');
+const Store = mongoose.model('Store');
 const promisify = require('es6-promisify')
 
 exports.loginForm = (req, res) => {
@@ -64,8 +65,8 @@ exports.register = async (req, res, next) => {
     next();
 }
 
-exports.account = (req, res) => {
-    res.render('account', {title: 'Edit Your Account'});
+exports.account = async (req, res) => {
+    res.render('account');
 }
 
 exports.updateAccount = async (req, res) => {

@@ -1,16 +1,25 @@
 .map {
-    padding: 20px;
-    background: $white;
-    box-shadow: $secondary-blue;
+  padding: 0 20px;
+}
+#map {
+  height: 500px;
+}
+.popup {
+  width: 300px;
+  img {
+    width: 100%;
   }
-  #map {
-    height: 500px;
+
+  &-title {
+    font-size:1.6rem;
+    font-weight:600;
+
   }
-  
-  .popup {
-    width: 300px;
-    img {
-      width: 100%;
-    }
+
+  &-address {
+    font-size:1.4rem;
+    
   }
-  
+}
+
+
