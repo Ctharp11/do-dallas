@@ -1,6 +1,12 @@
 .ratings {
     width: 90%;
-    height: 15rem;
-    border: 1px solid $black;
     margin: 0 auto 4rem;
+    display: flex;
+    justify-content: space-around;
+
+    &-subhead {
+        font-size: 2rem;
+        font-weight: 400;
+        font-family: "Bitter", serif;
+    }
 }

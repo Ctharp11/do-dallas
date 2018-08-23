@@ -123,6 +123,13 @@
       cursor: pointer;
     }
   }
+
+  &--count {
+    font-size: 1.4rem;
+    position: relative;
+    top: 1rem;
+    left: -1.8rem;
+  }
 }
 
 

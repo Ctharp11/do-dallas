@@ -84,19 +84,50 @@ storeSchema.statics.getTagsList = function() {
     ]);
 }
 
+storeSchema.statics.getTopCities = function() {
+    return this.aggregate([
+        {$unwind: '$city'},
+        {$group: {_id: '$city', count: {$sum: 1}}},
+        {$sort: {count: -1}},
+        {$limit: 5}
+    ]);
+}
+
+storeSchema.statics.getCityReviews = function () {
+    return this.aggregate([
+        { $lookup: { from: 'reviews', localField: '_id', foreignField: 'store', as: 'reviews' }},
+        // {$unwind: '$city'},
+        {$group: {_id: '$city', city_reviews: { $push : '$reviews'}}}
+        // { $match: { 'reviews.2': { $exists: true }}},
+
+        //sort all reviews by city
+
+       
+
+        //sort it by our new field, highest reviews first 
+
+        // { $sort: { averageRating: -1 }},
+
+        //limit it to 10 at most
+        // { $limit: 5 }
+    ])
+}
+
 storeSchema.statics.getTopStores = function() {
     return this.aggregate([
         //look for stores and populate their reviews
-        { $lookup: { from: 'reviews', localField: '_id', foreignField: 'store', as: 'reviews' }},
+        { $lookup: { from: 'reviews', localField: '_id', foreignField: 'stores', as: 'reviews' }},
 
-        //filter for stores that only have two or more reviews
-        { $match: { 'reviews.4': { $exists: true }}},
+        //filter for stores that only have three or more reviews
+        { $match: { 'reviews.2': { $exists: true }}},
 
         //add the average review fields
         { $project: {
             photo: '$$ROOT.photo',
             name: '$$ROOT.name',
             reviews: '$$ROOT.reviews',
+            slug: '$$ROOT.slug',
+            city: '$$ROOT.city',
             averageRating: { $avg: '$reviews.rating'}
         }},
 
@@ -115,6 +146,14 @@ storeSchema.virtual('reviews', {
     localField: '_id',
     foreignField: 'store'
 })
+
+function autopopulate(next) {
+    this.populate('reviews');
+    next();
+}
+
+storeSchema.pre('find', autopopulate);
+storeSchema.pre('findOne', autopopulate);
 
 
 module.exports = mongoose.model('Store', storeSchema);

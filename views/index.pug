@@ -6,7 +6,20 @@ block content
     .subhead Which Texas city has the supreme cuisine? 
 
     .inner
-        div.ratings City Ratings
+        h2 City Rankings
+        .ratings 
+            .ratings-most-cities
+                h2.ratings-subhead Most added restaurants:
+                    each city in cities 
+                        p #{city._id} #{city.count}
+            .ratings-top-reviews   
+                h2.ratings-subhead  Best reviews:  
+                    pre= h.dump(reviews)
+                    p asdasd
+                    p asdasd
+                    p asdasd
+                    p asdasd 
+                    p asdasd
 
         h2 All Restaurants
         .stores

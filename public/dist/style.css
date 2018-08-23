@@ -306,9 +306,15 @@ html, body {
 
 .ratings {
   width: 90%;
-  height: 15rem;
-  border: 1px solid #303030;
-  margin: 0 auto 4rem; }
+  margin: 0 auto 4rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+  .ratings-subhead {
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: "Bitter", serif; }
 
 .review {
   background: white;
@@ -638,6 +644,11 @@ html, body {
     margin-right: 2rem; }
     .store__action--icons:hover {
       cursor: pointer; }
+  .store__action--count {
+    font-size: 1.4rem;
+    position: relative;
+    top: 1rem;
+    left: -1.8rem; }
 
 .store__hero {
   height: 15rem;

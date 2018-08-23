@@ -17,19 +17,21 @@ const multerOptions = {
 }
 
 exports.homePage = async (req, res) => {
-    const stores = await Store.find();
-    res.render('index', {title: 'Restaurants', stores})
+    const reviewsP = await Store.getCityReviews();
+    // const citiesP = Store.getTopCities();
+    // const storesP = Store.find();
+    // const [cities, stores, reviews] = await Promise.all([citiesP, storesP, reviewsP]);
+    // res.render('index', {title: 'Restaurants', stores, cities, reviews})
+    res.json(reviewsP)
 }
 
 exports.getStore = async (req, res) => {
-    // const stores = await Store.find();
     const tag = req.params.tag;
     const tagQuery = tag || { $exists: true };
     const tagsPromise = Store.getTagsList();
     const storePromise = Store.find({tags: tagQuery});
     const [ tags, stores] = await Promise.all([tagsPromise, storePromise]);    
     res.render('stores', {title: 'Restaurants', tags, tag, stores})
-    // res.render('stores', {title: 'Restaurants', stores});
 }
 
 exports.addStore = (req, res) => {
@@ -164,7 +166,6 @@ exports.starStore = async (req, res) => {
 exports.getStars = async (req, res) => {
     const stores = await Store.find({
         _id: { $in: req.user.stars }
-        
     })
     res.render('star', {stores})
 }
@@ -176,6 +177,8 @@ exports.usersStores = async (req, res) => {
 }
 
 exports.topStores = async (req, res) => {
-    const stores = await Store.getTopStores();
-    res.render('top', {title: '\u{1F31F} Top \u{1F31F}', stores })
+    const cities = await Store.getTopCities();
+    res.json(cities)
+    // const stores = await Store.getTopStores();
+    // res.render('top', {title: '\u{1F31F} Top \u{1F31F}', stores })
 }
