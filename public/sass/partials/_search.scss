@@ -23,7 +23,11 @@
         width:80%;
         left: 50%;
         transform: translateX(-50%);
-    }
+      }
+
+      @media all and (max-width: 580px) { 
+        top: 22rem;
+      }
     }
     &__result {
       color: $black;

@@ -38,10 +38,19 @@ html, body {
   @media all and (max-width: 900px) {
     position: absolute;
     top: 2rem;
-    right: 5rem;
+    left: 30%;
     width: 35rem;
     height: 3rem;
     font-size:1.4rem;
+  }
+
+  @media all and (max-width: 580px) {
+    top: 6.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2.4rem;
+    font-size:3.6vw;
+    width: 90%;
   }
 }
 
