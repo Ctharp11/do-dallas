@@ -18,11 +18,10 @@ const multerOptions = {
 
 exports.homePage = async (req, res) => {
     const reviewsP = await Store.getCityReviews();
-    // const citiesP = Store.getTopCities();
-    // const storesP = Store.find();
-    // const [cities, stores, reviews] = await Promise.all([citiesP, storesP, reviewsP]);
-    // res.render('index', {title: 'Restaurants', stores, cities, reviews})
-    res.json(reviewsP)
+    const citiesP = Store.getTopCities();
+    const storesP = Store.find();
+    const [cities, stores, reviews] = await Promise.all([citiesP, storesP, reviewsP]);
+    res.render('index', {title: 'Restaurants', stores, cities, reviews})
 }
 
 exports.getStore = async (req, res) => {
@@ -177,8 +176,9 @@ exports.usersStores = async (req, res) => {
 }
 
 exports.topStores = async (req, res) => {
-    const cities = await Store.getTopCities();
-    res.json(cities)
-    // const stores = await Store.getTopStores();
-    // res.render('top', {title: '\u{1F31F} Top \u{1F31F}', stores })
+    // const cities = await Store.getTopCities();
+    // res.json(cities)
+    const stores = await Store.getTopStores();
+    res.render('top', {title: '\u{1F31F} Top \u{1F31F}', stores })
+    // res.json(stores)
 }

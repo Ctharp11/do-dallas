@@ -96,9 +96,22 @@ storeSchema.statics.getTopCities = function() {
 storeSchema.statics.getCityReviews = function () {
     return this.aggregate([
         { $lookup: { from: 'reviews', localField: '_id', foreignField: 'store', as: 'reviews' }},
-        // {$unwind: '$city'},
-        {$group: {_id: '$city', city_reviews: { $push : '$reviews'}}}
-        // { $match: { 'reviews.2': { $exists: true }}},
+        {$group: {_id: '$city', city_reviews: { $push : '$reviews'}}},
+        { $project: {
+        //     // photo: '$$ROOT.photo',
+        //     // name: '$$ROOT.name',
+        //     // reviews: '$$ROOT.reviews',
+        //     // slug: '$$ROOT.slug',
+        //     // city: '$$ROOT.city',
+        //     averageRating: { $avg: '$city_reviews[0].rating'}
+            "averageRating":{
+                "$map":{
+                "input":"$city_reviews",
+                "in":[{"$avg":"$$this.rating"}]
+            }
+            }
+        }},
+        
 
         //sort all reviews by city
 
@@ -106,17 +119,17 @@ storeSchema.statics.getCityReviews = function () {
 
         //sort it by our new field, highest reviews first 
 
-        // { $sort: { averageRating: -1 }},
+        { $sort: { averageRating: -1 }},
 
         //limit it to 10 at most
-        // { $limit: 5 }
+        { $limit: 5 }
     ])
 }
 
 storeSchema.statics.getTopStores = function() {
     return this.aggregate([
         //look for stores and populate their reviews
-        { $lookup: { from: 'reviews', localField: '_id', foreignField: 'stores', as: 'reviews' }},
+        { $lookup: { from: 'reviews', localField: '_id', foreignField: 'store', as: 'reviews' }},
 
         //filter for stores that only have three or more reviews
         { $match: { 'reviews.2': { $exists: true }}},

@@ -10,8 +10,8 @@ html, body {
 .inner {
   max-width:900px;
   margin: 4rem auto;
-  @media all and (max-width: 900px) {
-    padding: 2rem;
+  @media all and (max-width: 1100px) {
+    padding-top: 3rem;
   }
 }
 
@@ -24,6 +24,25 @@ html, body {
   border-bottom: 3px solid $yellow;
   width: 50%;
   font-weight: 600;
+
+  @media all and (max-width: 1100px) {
+    margin: 0;
+    position: absolute;
+    left: 27rem;
+    top: 4rem;
+    height:4rem;
+    width: 40rem;
+    font-size: 1.6rem;
+  }
+
+  @media all and (max-width: 900px) {
+    position: absolute;
+    top: 2rem;
+    right: 5rem;
+    width: 35rem;
+    height: 3rem;
+    font-size:1.4rem;
+  }
 }
 
 .wrapper {
