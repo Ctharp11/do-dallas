@@ -46,6 +46,9 @@ const storeSchema = new mongoose.Schema({
     city: {
         type: String
     }
+}, {
+    toJSON: {virtuals: true },
+    toObject: {virtuals: true }
 });
 
 storeSchema.pre('save', async function(next) {
@@ -73,13 +76,6 @@ storeSchema.index({
 //index for geospatial
 storeSchema.index( {location: '2dsphere'} );
 
-//index for user account info ---- Need author to get stores back and personal reviews
-// storeSchema.index({
-//     author: 'text',
-//     description: 'text',
-//     city: 'text'
-// });
-
 storeSchema.statics.getTagsList = function() {
     return this.aggregate([
         {$unwind: '$tags'},
@@ -87,6 +83,38 @@ storeSchema.statics.getTagsList = function() {
         {$sort: {count: -1}}
     ]);
 }
+
+storeSchema.statics.getTopStores = function() {
+    return this.aggregate([
+        //look for stores and populate their reviews
+        { $lookup: { from: 'reviews', localField: '_id', foreignField: 'store', as: 'reviews' }},
+
+        //filter for stores that only have two or more reviews
+        { $match: { 'reviews.4': { $exists: true }}},
+
+        //add the average review fields
+        { $project: {
+            photo: '$$ROOT.photo',
+            name: '$$ROOT.name',
+            reviews: '$$ROOT.reviews',
+            averageRating: { $avg: '$reviews.rating'}
+        }},
+
+        //sort it by our new field, highest reviews first 
+
+        { $sort: { averageRating: -1 }},
+
+        //limit it to 10 at most
+        { $limit: 10 }
+    ])
+}
+
+//find review where store's id property is equal to the review's stores property
+storeSchema.virtual('reviews', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'store'
+})
 
 
 module.exports = mongoose.model('Store', storeSchema);

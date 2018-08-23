@@ -4,16 +4,20 @@ include mixins/_storeCard
 
 block content 
     .inner
-        pre= stores
         h2 Your Account
 
         hr
 
         h2.account-h2 Your Stores
+            .stores
+                each store in stores
+                    +storeCard(store)
 
         hr
 
         h2.account-h2 Your Reviews
+            .reviewer__meta
+                pre= reviews
 
         hr
 

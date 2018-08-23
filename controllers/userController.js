@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const passwordValidator = require('password-validator');
 const User = mongoose.model('User');
 const Store = mongoose.model('Store');
+const Review = mongoose.model('Review');
 const promisify = require('es6-promisify')
 
 exports.loginForm = (req, res) => {
@@ -66,7 +67,14 @@ exports.register = async (req, res, next) => {
 }
 
 exports.account = async (req, res) => {
-    res.render('account');
+    const storeCall = Store.find({
+        author: req.user._id
+    })
+    const reviewCall = Review.find({
+        author: req.user._id
+    })
+    const [stores, reviews] = await Promise.all([storeCall, reviewCall]);
+    res.render('account', {stores, reviews});
 }
 
 exports.updateAccount = async (req, res) => {

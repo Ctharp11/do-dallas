@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const storeController = require('../controllers/storeController');
+const reviewController = require('../controllers/reviewController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const { catchErrors } = require('../handlers/errorHandlers');
@@ -45,11 +46,16 @@ router.post('/account/reset/:token',
     catchErrors(authController.update)
 );
 router.get('/map', storeController.mapPage);
+router.post('/reviews/:id', 
+    authController.isLoggedIn, 
+    catchErrors(reviewController.addReview)
+);
+router.get('/top', storeController.topStores);
 
 //APIs
 router.get('/api/search/', catchErrors(storeController.searchStores));
 router.get('/api/stores/near', catchErrors(storeController.mapStores));
 router.post('/api/store/:id/star', catchErrors(storeController.starStore));
-
+router.get('/stars', catchErrors(storeController.getStars));
 
 module.exports = router;

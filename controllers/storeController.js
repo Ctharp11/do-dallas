@@ -95,7 +95,7 @@ exports.updateStore = async (req, res) => {
 }
 
 exports.getStoreBySlug = async (req, res) => {
-    const store = await Store.findOne({slug: req.params.slug}).populate('author');
+    const store = await Store.findOne({slug: req.params.slug}).populate('author reviews');
     if (!store) return next();
     res.render('store', { title: store.name, store});
 }
@@ -159,4 +159,23 @@ exports.starStore = async (req, res) => {
             { new: true}
         );
     res.json(user);
+}
+
+exports.getStars = async (req, res) => {
+    const stores = await Store.find({
+        _id: { $in: req.user.stars }
+        
+    })
+    res.render('star', {stores})
+}
+
+exports.usersStores = async (req, res) => {
+    const stores = await Store.find({
+
+    })
+}
+
+exports.topStores = async (req, res) => {
+    const stores = await Store.getTopStores();
+    res.render('top', {title: '\u{1F31F} Top \u{1F31F}', stores })
 }
