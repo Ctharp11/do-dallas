@@ -126,8 +126,8 @@ label {
     cursor: pointer; }
 
 .avatar {
-  min-width: 50px;
-  height: 50px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -177,15 +177,17 @@ html, body {
       height: 4rem;
       width: 40rem;
       font-size: 1.6rem; } }
+  @media all and (max-width: 945px) {
+    .subhead {
+      font-size: 1.4rem;
+      width: 35rem; } }
   @media all and (max-width: 900px) {
     .subhead {
       position: absolute;
       top: 2rem;
       left: 30%;
-      width: 35rem;
-      height: 3rem;
-      font-size: 1.4rem; } }
-  @media all and (max-width: 580px) {
+      height: 3rem; } }
+  @media all and (max-width: 620px) {
     .subhead {
       top: 6.5rem;
       left: 50%;
@@ -239,7 +241,7 @@ html, body {
     @media all and (max-width: 900px) {
       .nav-head {
         top: 1rem; } }
-    @media all and (max-width: 580px) {
+    @media all and (max-width: 620px) {
       .nav-head {
         left: 50%;
         -ms-transform: translateX(-50%);
@@ -267,7 +269,7 @@ html, body {
       .nav-container {
         left: 5rem;
         top: 7rem; } }
-    @media all and (max-width: 580px) {
+    @media all and (max-width: 620px) {
       .nav-container {
         width: 100%;
         top: 10.5rem;
@@ -316,37 +318,44 @@ html, body {
         left: 50%;
         -ms-transform: translateX(-50%);
             transform: translateX(-50%); } }
-    @media all and (max-width: 580px) {
+    @media all and (max-width: 620px) {
       .nav-search {
-        top: 18rem; } }
+        top: 19rem; } }
   .nav-reg {
     position: absolute;
     top: 5rem;
     right: 5rem;
-    text-align: center; }
+    text-align: center;
+    -ms-flex-align: center;
+        align-items: center;
+    display: -ms-flexbox;
+    display: flex; }
     @media all and (max-width: 900px) {
       .nav-reg {
         right: 5rem;
         top: 7rem; } }
-    @media all and (max-width: 580px) {
+    @media all and (max-width: 620px) {
       .nav-reg {
         top: 14rem;
         left: 50%;
         -ms-transform: translateX(-50%);
             transform: translateX(-50%);
-        width: 100%; } }
+        width: 100%;
+        -ms-flex-pack: center;
+            justify-content: center; } }
     .nav-reg-numstars {
       position: absolute;
-      color: #ffffff;
+      color: #ffc200;
       text-align: center;
-      font-size: 1.4rem;
-      top: 1.3rem;
-      left: 2rem; }
+      font-size: 1.6rem;
+      top: 1.5rem;
+      left: 4.3rem; }
     .nav-reg-star {
-      height: 5rem; }
+      height: 4rem; }
     .nav-reg-item {
-      width: 8rem;
-      margin: 0 .5rem;
+      width: 7rem;
+      margin-left: 2rem;
+      margin-right: .5rem;
       text-align: center;
       text-decoration: none;
       transition: transform .3s ease; }
@@ -541,9 +550,9 @@ html, body {
         left: 50%;
         -ms-transform: translateX(-50%);
             transform: translateX(-50%); } }
-    @media all and (max-width: 580px) {
+    @media all and (max-width: 620px) {
       .search__results {
-        top: 22rem; } }
+        top: 23rem; } }
   .search__result {
     color: #303030;
     padding: 10px;

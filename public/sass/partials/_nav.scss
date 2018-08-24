@@ -16,7 +16,7 @@
             top: 1rem;
         }
 
-        @media all and (max-width: 580px) {
+        @media all and (max-width: 620px) {
             left: 50%;
             transform: translateX(-50%);
         }
@@ -54,7 +54,7 @@
             top:7rem;
         }
 
-        @media all and (max-width: 580px) {
+        @media all and (max-width: 620px) {
             width: 100%;
             top: 10.5rem;
             left: 50%;
@@ -109,8 +109,8 @@
             transform: translateX(-50%);
         }
 
-        @media all and (max-width: 580px) {
-            top: 18rem;
+        @media all and (max-width: 620px) {
+            top: 19rem;
         }
     }
     &-reg {
@@ -118,30 +118,33 @@
         top: 5rem;
         right: 5rem;
         text-align: center;
+        align-items: center;
+        display: flex;
 
         @media all and (max-width: 900px) {
             right: 5rem;
             top:7rem;
         }
 
-        @media all and (max-width: 580px) {
+        @media all and (max-width: 620px) {
             top: 14rem;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
+            justify-content: center;
         }
 
         &-numstars {
             position: absolute;
-            color: $white;
+            color: $yellow;
             text-align: center;
-            font-size: 1.4rem;
-            top: 1.3rem;
-            left: 2rem;
+            font-size: 1.6rem;
+            top: 1.5rem;
+            left: 4.3rem;
         }
 
         &-star {
-            height: 5rem;
+            height: 4rem;
         }
 
         &-item {
@@ -155,8 +158,9 @@
                     transform: translateY(-2px);
                 }
             }
-            width:8rem;
-            margin: 0 .5rem;
+            width:7rem;
+            margin-left: 2rem;
+            margin-right:.5rem;
             text-align:center;
             text-decoration: none;
             transition: transform .3s ease;
