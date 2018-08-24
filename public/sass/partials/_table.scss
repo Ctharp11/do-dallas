@@ -1,7 +1,15 @@
 .table {
     width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
     td {
       padding: 5px;
+      @media all and (max-width: 600px ) {
+        padding: 1px;
+        font-size: 1.2rem;
+      }
     }
     tr:nth-child(even) {
       background: white;
@@ -12,6 +20,13 @@
     thead tr {
       background: $black;
       color: white;
+    }
+    img {
+      @media all and (max-width: 600px ) {
+        height: 5rem;
+        width: 5rem;
+      }
+      
     }
   }
   

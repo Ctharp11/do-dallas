@@ -2,13 +2,18 @@
   display:flex;
   flex-wrap:wrap;
   margin: -1.25em 0 4em -1.25em;
+
+  @media screen and (max-width: 600px) {
+    display: block;
+    margin: 0 auto;
+  }
 }
 
 .store {
   background:$white;
   border: 1px solid $black;
   margin: 1.25em 0 0 1.25em;
-  width: calc(48% - 1.25em);
+  width: calc(50% - 1.25em);
   box-shadow: 3px 3px $black;
   &--wide {
     width: 100%;
@@ -70,6 +75,10 @@
     }
 
   }
+
+  &-photo {
+    width: 100%;
+  }
   &__details {
     padding: 2rem;
     p {
@@ -83,12 +92,11 @@
     font-style: italic;
     padding-bottom: 2rem;
   }
-  // @media all and (max-width: 850px) {
-  //   width: calc(50% - 1.25em);
-  // }
-  // @media all and (max-width: 550px) {
-  //   width: 100%;
-  // }
+
+  @media screen and (max-width: 600px) {
+    width: calc(90vw - 2rem);
+    margin: 2rem auto;
+  }
 }
 
 .store__actions {
@@ -162,5 +170,9 @@
   &--title {
     position: relative;
     top: 10rem;
+
+    @media screen and (max-width: 850px) {
+      font-size: 2.5rem;
+    }
   }
 }

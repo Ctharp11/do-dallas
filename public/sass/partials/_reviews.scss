@@ -27,9 +27,16 @@
         align-items: center;
         flex: 1;
         justify-content: center;
+        @media all and (max-width: 400px) { 
+          justify-content: flex-start;
+          padding-left: 2rem;
+        }
         &:last-child {
           border-right: 0;
         }
+      }
+      @media all and (max-width: 400px) {
+        display: block; 
       }
     }
     &__author {

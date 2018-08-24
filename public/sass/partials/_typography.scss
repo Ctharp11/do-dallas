@@ -47,7 +47,6 @@ p {
     left:0;
     top:0;
     height:100%;
-    // top:10%;
     display: block;
     position: absolute;
     z-index: -1;
@@ -59,11 +58,20 @@ p {
     border-bottom: 0;
     background-image: linear-gradient(to right, $yellow 100%, $yellow 50%);
   }
+
+  @media all and (max-width: 600px) {
+    line-height: .9;
+  }
 }
 
-.title--single {
-  max-width: 600px;
-  margin-top: -9rem;
-  font-size: 10rem;
-  text-align: center;
+.title__single {
+  // max-width: 600px;
+  // margin-top: -9rem;
+  // font-size: 10rem ;
+  // text-align: center;
+
+  @media all and (max-width: 600px) {
+    line-height: 1.1;
+
+  }
 }

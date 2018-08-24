@@ -49,7 +49,7 @@ exports.resize = async (req, res, next) => {
     //this temp save photo to our req object so it can be used in createStore when we call next
     req.body.photo = `${uuid.v4()}.${extension}`
     const photo = await jimp.read(req.file.buffer);
-    await photo.resize(600, jimp.AUTO);
+    await photo.resize(800, jimp.AUTO);
     await photo.write(`./public/uploads/${req.body.photo}`);
     next();
 }

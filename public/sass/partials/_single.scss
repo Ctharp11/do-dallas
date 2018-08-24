@@ -53,9 +53,14 @@
       float: right;
       position: relative;
       padding: 1rem;
-      // @media all and (max-width: 850px) {
-      //   margin-right: 0;
-      // }
+      @media all and (max-width: 850px) {
+        margin-right: 0;
+      }
+    }
+
+    @media all and (max-width: 620px) {
+      padding-top: 4rem;
+
     }
   }
   

@@ -89,6 +89,9 @@ label {
   margin-top: 2rem; }
   .form-flex > input {
     margin: .5rem; }
+  @media all and (max-width: 500px) {
+    .form-flex {
+      display: block; } }
 
 .password-text {
   font-size: 1.4rem;
@@ -158,6 +161,11 @@ html, body {
   @media all and (max-width: 1100px) {
     .inner {
       padding-top: 3rem; } }
+
+@media all and (max-width: 950px) {
+  .content {
+    width: 95%;
+    margin: 0 auto; } }
 
 .subhead {
   text-align: center;
@@ -447,8 +455,16 @@ html, body {
           flex: 1;
       -ms-flex-pack: center;
           justify-content: center; }
+      @media all and (max-width: 400px) {
+        .review__header > * {
+          -ms-flex-pack: start;
+              justify-content: flex-start;
+          padding-left: 2rem; } }
       .review__header > *:last-child {
         border-right: 0; }
+    @media all and (max-width: 400px) {
+      .review__header {
+        display: block; } }
   .review__author {
     -ms-flex-pack: start;
         justify-content: flex-start;
@@ -617,6 +633,12 @@ html, body {
     float: right;
     position: relative;
     padding: 1rem; }
+    @media all and (max-width: 850px) {
+      .single__location {
+        margin-right: 0; } }
+  @media all and (max-width: 620px) {
+    .single {
+      padding-top: 4rem; } }
 
 .star__button {
   border: none;
@@ -670,12 +692,16 @@ html, body {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: -1.25em 0 4em -1.25em; }
+  @media screen and (max-width: 600px) {
+    .stores {
+      display: block;
+      margin: 0 auto; } }
 
 .store {
   background: #ffffff;
   border: 1px solid #303030;
   margin: 1.25em 0 0 1.25em;
-  width: calc(48% - 1.25em);
+  width: calc(50% - 1.25em);
   box-shadow: 3px 3px #303030; }
   .store--wide {
     width: 100%; }
@@ -720,6 +746,8 @@ html, body {
         box-shadow: 1px 1px rgba(136, 136, 136, 0.5); }
       .store-recommend-button:focus {
         outline: none; }
+  .store-photo {
+    width: 100%; }
   .store__details {
     padding: 2rem; }
     .store__details p {
@@ -729,6 +757,10 @@ html, body {
     font-size: 1.4rem;
     font-style: italic;
     padding-bottom: 2rem; }
+  @media screen and (max-width: 600px) {
+    .store {
+      width: calc(90vw - 2rem);
+      margin: 2rem auto; } }
 
 .store__actions {
   z-index: 2;
@@ -787,11 +819,22 @@ html, body {
   .store__hero--title {
     position: relative;
     top: 10rem; }
+    @media screen and (max-width: 850px) {
+      .store__hero--title {
+        font-size: 2.5rem; } }
 
 .table {
-  width: 100%; }
+  width: 100%;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: grey; }
   .table td {
     padding: 5px; }
+    @media all and (max-width: 600px) {
+      .table td {
+        padding: 1px;
+        font-size: 1.2rem; } }
   .table tr:nth-child(even) {
     background: white; }
   .table tr:nth-child(odd):not(:first-child) {
@@ -799,6 +842,10 @@ html, body {
   .table thead tr {
     background: #303030;
     color: white; }
+  @media all and (max-width: 600px) {
+    .table img {
+      height: 5rem;
+      width: 5rem; } }
 
 .tags {
   margin: 0;
@@ -908,11 +955,12 @@ p {
   .title a {
     border-bottom: 0;
     background-image: linear-gradient(to right, #ffc200 100%, #ffc200 50%); }
+  @media all and (max-width: 600px) {
+    .title {
+      line-height: .9; } }
 
-.title--single {
-  max-width: 600px;
-  margin-top: -9rem;
-  font-size: 10rem;
-  text-align: center; }
+@media all and (max-width: 600px) {
+  .title__single {
+    line-height: 1.1; } }
 
 /*# sourceMappingURL=style.css.map*/

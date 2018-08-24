@@ -43,6 +43,10 @@ input, textarea {
     & > input {
       margin: .5rem;
     }
+
+    @media all and (max-width: 500px) {
+      display: block;
+    }
   }
 
   .password-text {
