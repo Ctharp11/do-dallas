@@ -58,7 +58,7 @@ exports.createStore = async (req, res) => {
     req.body.author = req.user._id;
     try {
         const store = await (new Store(req.body)).save(); 
-        req.flash('success', `Successfully created ${store.name}. Care to leave a review?`);
+        req.flash('success', `Successfully created ${store.name}!`);
         res.redirect(`/store/${store.slug}`);
         return;
     }
