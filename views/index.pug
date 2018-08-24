@@ -9,16 +9,15 @@ block content
         h2 City Rankings
         .ratings 
             .ratings-most-cities
-                h2.ratings-subhead Most added restaurants:
-                    each city in cities 
-                        p #{city._id} #{city.count}
+                h2.ratings-subhead Most Restaurants:
+                    each city, i in cities 
+                        p.ratings-rate #{i + 1}) #{city._id} - #{city.count}
             .ratings-top-reviews   
                 h2.ratings-subhead  Best reviews:  
-                    p asdasd
-                    p asdasd
-                    p asdasd
-                    p asdasd 
-                    p asdasd
+                    each review, i in reviews  
+                        p.ratings-rate #{i + 1}) #{review._id} - #{Math.round(review.averageRatingIndex * 100) / 100} / 5
+        
+        a(href="/add") Don't like the rankings? Click here to fight! 
 
         h2 All Restaurants
         .stores

@@ -96,32 +96,13 @@ storeSchema.statics.getTopCities = function() {
 storeSchema.statics.getCityReviews = function () {
     return this.aggregate([
         { $lookup: { from: 'reviews', localField: '_id', foreignField: 'store', as: 'reviews' }},
-        {$group: {_id: '$city', city_reviews: { $push : '$reviews'}}},
-        { $project: {
-        //     // photo: '$$ROOT.photo',
-        //     // name: '$$ROOT.name',
-        //     // reviews: '$$ROOT.reviews',
-        //     // slug: '$$ROOT.slug',
-        //     // city: '$$ROOT.city',
-        //     averageRating: { $avg: '$city_reviews[0].rating'}
-            "averageRating":{
-                "$map":{
-                "input":"$city_reviews",
-                "in":[{"$avg":"$$this.rating"}]
-            }
-            }
-        }},
-        
-
-        //sort all reviews by city
-
-       
-
-        //sort it by our new field, highest reviews first 
-
-        { $sort: { averageRating: -1 }},
-
-        //limit it to 10 at most
+        { $match: { 'reviews.2': { $exists: true }}},
+        {$group: {
+            _id: '$city', 
+            city_reviews: { $push : '$reviews'}}
+        },
+        {"$project":{ "averageRatingIndex":{"$avg":{ "$map":{ "input":"$city_reviews", "in":{"$avg":"$$this.rating"} } }} }},
+        { $sort: { averageRatingIndex: -1 }},
         { $limit: 5 }
     ])
 }

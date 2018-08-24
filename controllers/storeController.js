@@ -21,7 +21,7 @@ exports.homePage = async (req, res) => {
     const citiesP = Store.getTopCities();
     const storesP = Store.find();
     const [cities, stores, reviews] = await Promise.all([citiesP, storesP, reviewsP]);
-    res.render('index', {title: 'Restaurants', stores, cities, reviews})
+    res.render('index', {title: 'Restaurants', stores, cities, reviews});
 }
 
 exports.getStore = async (req, res) => {

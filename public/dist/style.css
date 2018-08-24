@@ -417,9 +417,16 @@ html, body {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around; }
+  @media all and (max-width: 500px) {
+    .ratings {
+      display: block; } }
+  @media all and (max-width: 500px) {
+    .ratings-most-cities {
+      display: block;
+      margin-bottom: 2rem; } }
   .ratings-subhead {
-    font-size: 2rem;
-    font-weight: 400;
+    font-size: 2.2rem;
+    font-weight: 600;
     font-family: "Bitter", serif; }
 
 .review {
