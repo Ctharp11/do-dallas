@@ -21,7 +21,7 @@ router.post('/add/:id',
 router.post('/add', 
     storeController.upload,
     catchErrors(storeController.resize),
-    catchErrors(storeController.createStore)
+    storeController.createStore
 );
 router.get('/store/:slug', catchErrors(storeController.getStoreBySlug));
 router.get('/tags', catchErrors(storeController.getStoresByTag));

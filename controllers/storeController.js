@@ -2,8 +2,12 @@ const mongoose = require('mongoose');
 const Store = mongoose.model('Store');
 const User = mongoose.model('User');
 const multer = require('multer');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
 const jimp = require('jimp');
 const uuid = require('uuid');
+const cloudinary = require('cloudinary');
+require('dotenv').config({path: '../variables.env'})
 const multerOptions = {
     storage: multer.memoryStorage(),
     fileFilter: (req, file, next) => {
@@ -15,6 +19,11 @@ const multerOptions = {
         }
     }
 }
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME,
+    api_key: process.env.API_KEY,
+    api_secret: process.env.API_SECRET
+});
 
 exports.homePage = async (req, res) => {
     const reviewsP = await Store.getCityReviews();
@@ -54,23 +63,39 @@ exports.resize = async (req, res, next) => {
     next();
 }
 
-exports.createStore = async (req, res) => {
-    req.body.author = req.user._id;
-    try {
-        const store = await (new Store(req.body)).save(); 
-        req.flash('success', `Successfully created ${store.name}!`);
-        res.redirect(`/store/${store.slug}`);
-        return;
-    }
-    catch(err) {
-        if (err.code === 11000) {
-           req.flash('error', "This store has already been added! Click here to leave a review.");
-           res.redirect('back'); 
+exports.createStore = (req, res) => {
+    cloudinary.v2.uploader.upload(`./public/uploads/${req.body.photo}`, function(err, result) {
+        if (err) {
+            req.flash('error', "Error uploading photo. Please try again!");
+            res.redirect('back'); 
+            return;
         }
-        req.flash('error', "Sorry, there was an error!");
-        res.redirect('back'); 
-        return;
-    }
+        console.log(result)
+        if (result) {
+            req.body.author = req.user._id;
+            req.body.photo = result.url;
+            req.body.photo_id = result.public_id;
+        }
+        console.log('req.body',req.body)
+            const store = (new Store(req.body))
+            .save()
+            .then(function(result) {
+                console.log(result)
+                req.flash('success', `Successfully created ${result.name}!`);
+                res.redirect(`/store/${result.slug}`);
+                return;
+              }, function(err) {
+                  console.log(err)
+                if (err.code === 11000) {
+                    req.flash('error', "This store has already been added! Click here to leave a review.");
+                    res.redirect('back'); 
+                    return;
+                }
+                req.flash('error', "Sorry, there was an error! Make sure you added a store name, photo, and food type!");
+                res.redirect('back'); 
+                return;
+              });
+    });
 };
 
 const confirmOwner = (store, user) => {
@@ -179,6 +204,6 @@ exports.topStores = async (req, res) => {
     // const cities = await Store.getTopCities();
     // res.json(cities)
     const stores = await Store.getTopStores();
-    res.render('top', {title: '\u{1F31F} Top \u{1F31F}', stores })
+    res.render('index', {title: '\u{1F31F} Top \u{1F31F}', stores })
     // res.json(stores)
 }

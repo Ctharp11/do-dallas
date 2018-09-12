@@ -991,13 +991,17 @@ function autocomplete(input, latInput, lngInput) {
     var dropdown = new google.maps.places.Autocomplete(input, options);
 
     dropdown.addListener('place_changed', function () {
+
         var place = dropdown.getPlace();
+        console.log(place);
         var patt = new RegExp('<span class="locality">(.*?)<\/span>');
         var placeFull = place.adr_address;
         var result = patt.exec(placeFull);
         var city = document.querySelector('.city');
+        var name = document.querySelector('.name');
+        var text = document.querySelector('.text');
         var error = document.querySelector('.address-error');
-        error.value = '';
+        error.innerHTML = '';
         city.value = '';
         if (!place.adr_address.includes('<span class="region">TX</span>')) {
             error.innerHTML = 'That\'s not a place in Texas! Try again!';
@@ -1006,6 +1010,7 @@ function autocomplete(input, latInput, lngInput) {
             return;
         }
         city.value = result[1];
+        name.value = place.name;
         latInput.value = place.geometry.location.lat();
         lngInput.value = place.geometry.location.lng();
     });

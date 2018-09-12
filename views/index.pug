@@ -1,11 +1,16 @@
 extends layout
 
 include mixins/_storeCard
+include mixins/_storeForm
 
 block content
     .subhead Which Texas city has the supreme cuisine? 
 
     .inner
+
+        div Add restaurant to the fight! 
+            +storeForm()
+
         h2 City Rankings
         .ratings 
             .ratings-most-cities
@@ -19,8 +24,22 @@ block content
         
         a(href="/add") Don't like the rankings? Click here to fight! 
 
-        h2 All Restaurants
-        .stores
-            each store in stores
-                +storeCard(store)
+        h2 Top #{stores.length} Restaurants
+        table.table
+            thead
+                td photo
+                td ranking
+                td name
+                td city
+                td reviews
+                td Average Rating
+            each store, i in stores
+                tr 
+                    td: a(href=`/store/${store.slug}`) 
+                        img(width=200 src=`${store.photo || 'store.png'}` alt=store.name)
+                    td #{i + 1}
+                    td: a(href=`/store/${store.slug}`)= store.name
+                    td= store.city
+                    td= store.reviews.length
+                    td #{Math.round(store.averageRating * 10) / 10}/5
             

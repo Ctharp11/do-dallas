@@ -31,13 +31,17 @@ function autocomplete(input, latInput, lngInput) {
     const dropdown = new google.maps.places.Autocomplete(input, options);
     
     dropdown.addListener('place_changed', () => {
+       
         const place = dropdown.getPlace();
+        console.log(place);
         const patt = new RegExp('<span class="locality">(.*?)<\/span>');
         const placeFull = place.adr_address;
         const result = patt.exec(placeFull);
         const city = document.querySelector('.city');
+        const name = document.querySelector('.name');
+        const text = document.querySelector('.text');
         const error = document.querySelector('.address-error');
-        error.value= '';
+        error.innerHTML = '';
         city.value = '';
         if (!place.adr_address.includes('<span class="region">TX</span>')) {
             error.innerHTML = 'That\'s not a place in Texas! Try again!';
@@ -46,6 +50,7 @@ function autocomplete(input, latInput, lngInput) {
             return;
         }
         city.value = result[1];
+        name.value = place.name;
         latInput.value = place.geometry.location.lat();
         lngInput.value = place.geometry.location.lng();
     })

@@ -12,11 +12,7 @@ const storeSchema = new mongoose.Schema({
     description: {
         type: String,
         trim: true,
-        required: 'Please enter a description!'
-    },
-    tags: {
-        type: [String],
-        required: 'Please add at least one tag!'
+        required: 'Please enter a food type!'
     },
     created: {
         type: Date,
@@ -35,9 +31,15 @@ const storeSchema = new mongoose.Schema({
             required: 'Please enter an address!'
         }
     },
+    tags: {
+        type: [String]
+    },
     photo: {
         type: String,
-        required: 'Please add a photo!'
+        require: 'Please add a photo'
+    },
+    photo_id: {
+        type: String,
     },
     author: {
         type: mongoose.Schema.ObjectId,
