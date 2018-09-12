@@ -8,7 +8,7 @@ const passwordValidator = require('password-validator');
 
 exports.login = passport.authenticate('local', {
     failureRedirect: '/login',
-    failureFlash: "Failed login!",
+    failureFlash: "Username or password not recognized!",
     successRedirect: '/'
 })
 
@@ -50,7 +50,7 @@ exports.forgot = async (req, res) => {
     const resetUrl = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
     await mail.send({
         user, 
-        subject: 'Password Reset for Dine Dallas',
+        subject: 'Password Reset for TX Food Fight',
         resetUrl,
         filename: 'password-reset'
     })

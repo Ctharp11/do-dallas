@@ -22,22 +22,15 @@ const generateHTML = (file, options = {}) => {
     return inlined;
 }
 
-// client.sendEmail({
-
-//   }).then(res => {
-//       console.log(res)
-//   }).catch(err => { console.log(err)}) 
-
 exports.send = async (options) => {
     const html = generateHTML(options.filename, options);
     const text = htmlToText.fromString(html);
     const mailOptions = {
-        from: `TX Food Fight <txfoodfight@camerontharp.com>`,
+        from: `TX Food Fight <no_reply@camerontharp.com>`,
         to: options.user.email,
         subject: options.subject,
         HtmlBody: html,
         TextBody: text
     };
-    // const sendMail = promisify(transport.sendMail, transport);
     return client.sendEmail(mailOptions);
 }
