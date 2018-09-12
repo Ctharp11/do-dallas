@@ -31,6 +31,7 @@ exports.isLoggedIn = (req, res, next) => {
         return;
     }
     res.redirect('/login');
+    return;
 }
 
 exports.forgot = async (req, res) => {
@@ -39,6 +40,7 @@ exports.forgot = async (req, res) => {
     if (!user) {
         req.flash('error', 'Check your email for a password reset!')
         res.redirect('back');
+        return;
     }
     //2) Set reset and expiry tokens for user
     user.resetPasswordToken = crypto.randomBytes(20).toString('hex');
@@ -55,6 +57,7 @@ exports.forgot = async (req, res) => {
     req.flash('success', 'Check your email for a password reset!')
     //4) Redirect to login page
     res.redirect('/login');
+    return;
 };
 
 exports.reset = async (req, res) => {
@@ -65,6 +68,7 @@ exports.reset = async (req, res) => {
     if (!user) {
         req.flash('error', 'Password reset invalid or expired')
         res.redirect('/login');
+        return;
     }
     res.render('reset', {title: 'Reset your Password'});
 };
@@ -115,4 +119,5 @@ exports.update = async (req, res) => {
     await req.login(updatedUser);
     req.flash('success', 'You password has been reset! You are now logged in!');
     res.redirect('/');
+    return;
 }

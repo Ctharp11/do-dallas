@@ -89,4 +89,5 @@ exports.updateAccount = async (req, res) => {
     );
     req.flash('success', 'Information successfully updated!');
     res.redirect('back');
+    return;
 }
