@@ -7,9 +7,9 @@ block content
     .subhead Which Texas city has the supreme cuisine? 
 
     .inner
-
-        div Add restaurant to the fight! 
-            +storeForm()
+        div.layout-center
+            a(href="/add")
+                button.layout-add Add a restaurant to the fight!
 
         h2 City Rankings
         .ratings 
@@ -21,8 +21,6 @@ block content
                 h2.ratings-subhead  Best reviews:  
                     each review, i in reviews  
                         p.ratings-rate #{i + 1}) #{review._id} - #{Math.round(review.averageRatingIndex * 100) / 100} / 5
-        
-        a(href="/add") Don't like the rankings? Click here to fight! 
 
         h2 Top #{stores.length} Restaurants
         table.table

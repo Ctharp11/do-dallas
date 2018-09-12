@@ -19,6 +19,14 @@
     width: 100%;
   }
 
+  &-temp-hide {
+    display: none;
+  }
+
+  &-hidden {
+    display: none;
+  }
+
   &__starbtn {
     background: white;
     border: none;

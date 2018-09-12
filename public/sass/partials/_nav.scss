@@ -16,13 +16,13 @@
             top: 1rem;
         }
 
-        @media all and (max-width: 620px) {
+        @media all and (max-width: 725px) {
             left: 50%;
             transform: translateX(-50%);
         }
 
         &-logo {
-            height: 13rem;
+            height: 10rem;
 
             @media all and (max-width: 1190px) {
                 height: 9rem;
@@ -37,14 +37,14 @@
 
     &-container{
         position: absolute;
-        top: 5rem;
+        top: 6rem;
         left: 33rem;
 
-        @media all and (max-width: 1190px) {
+        @media all and (max-width: 1245px) {
             left: 27rem;
         }
 
-        @media all and (max-width: 1100px) {
+        @media all and (max-width: 1190px) {
             left: 5rem;
             top: 13.5rem;
           }
@@ -54,12 +54,13 @@
             top:7rem;
         }
 
-        @media all and (max-width: 620px) {
+        @media all and (max-width: 725px) {
             width: 100%;
             top: 10.5rem;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
+            font-size:1.4rem;
         }
 
         &-item {
@@ -81,10 +82,10 @@
     &-search {
         position: absolute;
         top: 5rem;
-        right: 32rem;
+        right: 29rem;
         align-items: center;
         display: flex;
-        height: 1.2rem;
+        height: 4rem;
         width: 20rem;
         font-size: 1.6rem;
         border: 1px solid $black;
@@ -95,9 +96,9 @@
             right: 30rem;
         }
 
-        @media all and (max-width: 1100px) {
+        @media all and (max-width: 1190px) {
             top: 12.5rem;
-            left: 40rem;
+            left: 50rem;
             height: 5rem;
             width: 30%;
         }
@@ -109,7 +110,7 @@
             transform: translateX(-50%);
         }
 
-        @media all and (max-width: 620px) {
+        @media all and (max-width: 725px) {
             top: 19rem;
         }
     }
@@ -123,15 +124,16 @@
 
         @media all and (max-width: 900px) {
             right: 5rem;
-            top:7rem;
+            top:6rem;
         }
 
-        @media all and (max-width: 620px) {
+        @media all and (max-width: 725px) {
             top: 14rem;
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
             justify-content: center;
+            font-size:1.4rem;
         }
 
         &-numstars {
@@ -141,10 +143,17 @@
             font-size: 1.6rem;
             top: 1.5rem;
             left: 4.3rem;
+            @media all and (max-width: 725px) {
+                top: .8rem;
+                left: 4rem;
+            }
         }
 
         &-star {
             height: 4rem;
+            @media all and (max-width: 725px) {
+                height: 3rem;
+            }
         }
 
         &-item {

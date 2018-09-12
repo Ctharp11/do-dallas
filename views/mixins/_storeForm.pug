@@ -3,16 +3,16 @@ mixin storeForm(store = {})
         label(for="address") Start typing restaurant name and city, then select from dropdown.
         div.address-error
         input(type="text" id="address" placeholder="Resturant name" name="location[address]" value=(store.location &&store.location.address))
-        div.form-flex
-            label.hidden(for="name") Restaurant Name 
-            input.name.hidden(type="text" name="name" value=store.name)
-            label.hidden(for="city") City
-            input.city.hidden(type="text" name="city" value=store.city)
+        div.form-flex.store-temp-hide
+            label(for="name") Restaurant Name 
+            input.name(type="text" name="name" value=store.name)
+            label(for="city") City
+            input.city(type="text" name="city" value=store.city)
 
         label.hidden(for="description") Type of food
         input.text.hidden(name="description" placeholder="Mexican, Greek, burgers..." value=store.description)
          //- photos
-        label(for='photo') Add Photo (optional)
+        label(for='photo') Add Photo
         input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg" )
         if (store.photo)
             img.store-photo(src=`${store.photo}`, alt=`${store.name}`)
@@ -26,10 +26,10 @@ mixin storeForm(store = {})
                     input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
                     label(for=choice) #{choice}
         //- location
-        div.form-flex
-            label.hidden(for="lat") Latitude
-            input.hidden(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]))
-            label.hidden(for="lng") Longitude
-            input.hidden(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]))
+        div.store-hidden
+            label(for="lat") Latitude
+            input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]))
+            label(for="lng") Longitude
+            input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]))
         input(type="submit" value="Save Restaurant" class="button")
     

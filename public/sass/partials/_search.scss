@@ -5,17 +5,14 @@
       background: $white;
       position: absolute;
       width: 20rem;
-      top: 8.1rem;
-      right:32rem;
+      top: 9rem;
+      right:29rem;
       box-shadow: 3px 3px rgba($black, 0.2);
       z-index: 5;
 
       @media all and (max-width: 1190px) {
-        right: 30rem;
-      }
-      @media all and (max-width: 1100px) {
         top: 17.5rem;
-        left: 40rem;
+        left: 50rem;
         width: 30%;
       }
 
@@ -25,7 +22,7 @@
         transform: translateX(-50%);
       }
 
-      @media all and (max-width: 620px) { 
+      @media all and (max-width: 725px) { 
         top: 23rem;
       }
     }

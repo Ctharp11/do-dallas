@@ -24,6 +24,11 @@
    height: 4rem;
    border-radius: 50%;
    align-self: center;
+
+   @media all and (max-width: 725px) {
+    height: 3rem;
+    width: 3rem;
+   }
   }
   
   .card {

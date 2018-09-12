@@ -993,7 +993,6 @@ function autocomplete(input, latInput, lngInput) {
     dropdown.addListener('place_changed', function () {
 
         var place = dropdown.getPlace();
-        console.log(place);
         var patt = new RegExp('<span class="locality">(.*?)<\/span>');
         var placeFull = place.adr_address;
         var result = patt.exec(placeFull);
@@ -1001,6 +1000,10 @@ function autocomplete(input, latInput, lngInput) {
         var name = document.querySelector('.name');
         var text = document.querySelector('.text');
         var error = document.querySelector('.address-error');
+        var hidden = document.querySelector('.store-temp-hide');
+        var address = document.querySelector('#address');
+        city.disabled = true;
+        name.disabled = true;
         error.innerHTML = '';
         city.value = '';
         if (!place.adr_address.includes('<span class="region">TX</span>')) {
@@ -1013,6 +1016,17 @@ function autocomplete(input, latInput, lngInput) {
         name.value = place.name;
         latInput.value = place.geometry.location.lat();
         lngInput.value = place.geometry.location.lng();
+        if (city.value && name.value !== '') {
+            hidden.classList.remove('store-temp-hide');
+        }
+    });
+
+    address.on('keydown', function () {
+        console.log(this.innerHTML);
+        var hidden = document.querySelector('.form-flex');
+        if (this.innerHTML === '') {
+            hidden.classList.add('store-temp-hide');
+        }
     });
 
     input.on('keydown', function (e) {

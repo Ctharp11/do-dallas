@@ -10,7 +10,7 @@ html, body {
 .inner {
   max-width:900px;
   margin: 4rem auto;
-  @media all and (max-width: 1100px) {
+  @media all and (max-width: 1190px) {
     padding-top: 3rem;
   }
 }
@@ -32,7 +32,7 @@ html, body {
   width: 50%;
   font-weight: 600;
 
-  @media all and (max-width: 1100px) {
+  @media all and (max-width: 1190px) {
     margin: 0;
     position: absolute;
     left: 27rem;
@@ -54,13 +54,16 @@ html, body {
     height: 3rem;
   }
 
-  @media all and (max-width: 620px) {
+  @media all and (max-width: 725px) {
     top: 6.5rem;
     left: 50%;
     transform: translateX(-50%);
     height: 2.4rem;
-    font-size:3.6vw;
-    width: 90%;
+  }
+
+  @media all and (max-width: 400px) {
+    width: 95%;
+    font-size: 1.2rem;
   }
 }
 
@@ -74,6 +77,42 @@ html, body {
 .footer,
 .push {
   height: 100px;
+}
+
+.layout-add {
+  border: 2px solid $black;
+  padding: 1rem;
+  width: 50%;
+  text-align: center;
+  box-shadow: 3px 3px $black;
+  transition: all .3s ease-in;
+  font-size: 1.4rem;
+  background-color: $white;
+  @media screen and (max-width: 725px) {
+    width: 100%;
+  }
+}
+
+.layout-add:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px $black;
+}
+.layout-add:focus,
+.layout-add:active {
+  outline: 0;
+}
+.layout-add:active {
+  transform: translateY(2px);
+  box-shadow: 1px 1px $black;
+}
+
+.layout-center {
+  @media screen and (max-width: 725px) {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width:83%;
+  }
 }
 
 
