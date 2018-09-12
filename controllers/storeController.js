@@ -201,9 +201,6 @@ exports.usersStores = async (req, res) => {
 }
 
 exports.topStores = async (req, res) => {
-    // const cities = await Store.getTopCities();
-    // res.json(cities)
     const stores = await Store.getTopStores();
     res.render('index', {title: '\u{1F31F} Top \u{1F31F}', stores })
-    // res.json(stores)
 }

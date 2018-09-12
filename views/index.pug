@@ -39,5 +39,8 @@ block content
                     td: a(href=`/store/${store.slug}`)= store.name
                     td= store.city
                     td= store.reviews.length
-                    td #{Math.round(store.averageRating * 10) / 10}/5
+                    if store.averageRating
+                        td #{Math.round(store.averageRating * 10) / 10}/5
+                    else if !store.averageRating
+                        td No store ratings
             

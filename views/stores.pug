@@ -3,9 +3,9 @@ extends layout
 include mixins/_storeCard
 block content  
     .inner 
-        div Click *insert comment icon* to leave a review!
-        div **have dropdown with city filter
-        div **have search bar from nav
+        span Click on the comment icon (
+        img.store-icon-display(src="/images/icons/comments.png") 
+        span ) to leave a review! Use the filter below or the search in the nav to find restaurants!
         h2.tag-h2 #{tag || 'Filter'} 
         ul.tags
             each t in tags

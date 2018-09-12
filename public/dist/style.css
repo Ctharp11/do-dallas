@@ -761,6 +761,10 @@ html, body {
     width: 100%; }
   .store-temp-hide {
     display: none; }
+  .store-icon-display {
+    height: 1.5rem;
+    margin: 0 5px;
+    margin-bottom: -3px; }
   .store-hidden {
     display: none; }
   .store__starbtn {
