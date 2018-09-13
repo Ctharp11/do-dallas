@@ -60,38 +60,37 @@ exports.resize = async (req, res, next) => {
     const photo = await jimp.read(req.file.buffer);
     await photo.resize(800, jimp.AUTO);
     await photo.write(`./public/uploads/${req.body.photo}`);
-    next();
+    setTimeout(function() {
+      next(); 
+    }, 0);
 }
 
 exports.createStore = (req, res) => {
     cloudinary.v2.uploader.upload(`./public/uploads/${req.body.photo}`, function(err, result) {
         if (err) {
-            req.flash('error', "Error uploading photo. Please try again!");
+            console.log(JSON.stringify(err));
+            req.flash('error', `Error uploading photo. Please try again! ${err}`);
             res.redirect('back'); 
             return;
         }
-        console.log(result)
         if (result) {
             req.body.author = req.user._id;
             req.body.photo = result.url;
             req.body.photo_id = result.public_id;
         }
-        console.log('req.body',req.body)
             const store = (new Store(req.body))
             .save()
             .then(function(result) {
-                console.log(result)
                 req.flash('success', `Successfully created ${result.name}!`);
                 res.redirect(`/store/${result.slug}`);
                 return;
               }, function(err) {
-                  console.log(err)
                 if (err.code === 11000) {
-                    req.flash('error', "This store has already been added! Click here to leave a review.");
+                    req.flash('error', "This store has already been added!");
                     res.redirect('back'); 
                     return;
                 }
-                req.flash('error', "Sorry, there was an error! Make sure you added a store name, photo, and food type!");
+                req.flash('error', "Sorry, there was an error! Make sure you added at least a store address and food type!");
                 res.redirect('back'); 
                 return;
               });

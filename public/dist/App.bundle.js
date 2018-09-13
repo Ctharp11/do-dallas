@@ -1002,8 +1002,6 @@ function autocomplete(input, latInput, lngInput) {
         var error = document.querySelector('.address-error');
         var hidden = document.querySelector('.store-temp-hide');
         var address = document.querySelector('#address');
-        city.disabled = true;
-        name.disabled = true;
         error.innerHTML = '';
         city.value = '';
         if (!place.adr_address.includes('<span class="region">TX</span>')) {
@@ -1021,13 +1019,13 @@ function autocomplete(input, latInput, lngInput) {
         }
     });
 
-    address.on('keydown', function () {
-        console.log(this.innerHTML);
-        var hidden = document.querySelector('.form-flex');
-        if (this.innerHTML === '') {
-            hidden.classList.add('store-temp-hide');
-        }
-    });
+    // address.on('keydown', function() {
+    //     console.log(this.innerHTML);
+    //     const hidden = document.querySelector('.form-flex');
+    //     if (this.innerHTML === '') {
+    //         hidden.classList.add('store-temp-hide');
+    //     }
+    // })
 
     input.on('keydown', function (e) {
         if (e.keyCode === 13) e.preventDefault();

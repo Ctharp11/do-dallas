@@ -10,10 +10,10 @@ mixin storeForm(store = {})
             input.city(type="text" name="city" value=store.city)
 
         label.hidden(for="description") Type of food
-        input.text.hidden(name="description" placeholder="Mexican, Greek, burgers..." value=store.description)
+        input.text.hidden(name="description" placeholder="Mexican, Greek, American, burgers, bar food..." value=store.description)
          //- photos
         label(for='photo') Add Photo
-        input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg" )
+        input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg, image/jpg" )
         if (store.photo)
             img.store-photo(src=`${store.photo}`, alt=`${store.name}`)
         - const choices = ['Wifi', 'Open Late', 'Family Friendly', 'Vegetarian', 'Alcohol'] 

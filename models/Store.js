@@ -35,8 +35,7 @@ const storeSchema = new mongoose.Schema({
         type: [String]
     },
     photo: {
-        type: String,
-        require: 'Please add a photo'
+        type: String
     },
     photo_id: {
         type: String,
