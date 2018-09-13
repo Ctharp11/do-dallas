@@ -57,7 +57,6 @@ exports.register = async (req, res, next) => {
     const register = promisify(User.register, User);
     await register(user, req.body.password);
     const errors = req.validationErrors()
-    console.log(errors)
     if('controller',errors) {
         req.flash('error', errors.map(err => err.msg));
         res.render('register', {title: 'Register', body: req.body, flashes: req.flash() });
@@ -73,7 +72,7 @@ exports.account = async (req, res) => {
     const reviewCall = Review.find({
         author: req.user._id
     })
-    const [stores, reviews] = await Promise.all([storeCall, reviewCall]);
+    const [stores, reviews] = await Promise.all([storeCall, reviewCall])
     res.render('account', {stores, reviews});
 }
 

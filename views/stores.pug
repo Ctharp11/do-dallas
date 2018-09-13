@@ -5,7 +5,10 @@ block content
     .inner 
         span Click on the comment icon (
         img.store-icon-display(src="/images/icons/comments.png") 
-        span ) to leave a review! Use the filter below or the search in the nav to find restaurants!
+        span ) to leave a review or the star icon (
+        img.store-icon-display(src="/images/icons/star.png")
+        span ) to favorite a restaurant! 
+        div Use the filter below or the nav search to find restaurants!
         h2.tag-h2 #{tag || 'Filter'} 
         ul.tags
             each t in tags

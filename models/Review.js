@@ -26,6 +26,9 @@ const reviewSchema = new mongoose.Schema({
         min: 1,
         max: 5
     }
+},{
+    toJSON: {virtuals: true },
+    toObject: {virtuals: true }
 });
 
 function autopopulate(next){
