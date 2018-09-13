@@ -26,11 +26,12 @@ cloudinary.config({
 });
 
 exports.homePage = async (req, res) => {
-    const reviewsP = await Store.getCityReviews();
+    const reviewsP = Store.getCityReviews();
     const citiesP = Store.getTopCities();
     const storesP = Store.find();
-    const [cities, stores, reviews] = await Promise.all([citiesP, storesP, reviewsP]);
-    res.render('index', {title: 'Restaurants', stores, cities, reviews});
+    const topsP = Store.getTopStores();
+    const [cities, reviews, tops, stores] = await Promise.all([citiesP, reviewsP, topsP, storesP]);
+    res.render('index', {title: 'Restaurants', tops, cities, stores, reviews});
 }
 
 exports.getStore = async (req, res) => {
@@ -201,6 +202,6 @@ exports.usersStores = async (req, res) => {
 }
 
 exports.topStores = async (req, res) => {
-    const stores = await Store.getTopStores();
-    res.render('index', {title: '\u{1F31F} Top \u{1F31F}', stores })
+    const tops = await Store.getTopStores();
+    res.render('index', tops)
 }

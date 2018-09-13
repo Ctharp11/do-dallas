@@ -22,7 +22,7 @@ block content
                     each review, i in reviews  
                         p.ratings-rate #{i + 1}) #{review._id} - #{Math.round(review.averageRatingIndex * 100) / 100} / 5
 
-        h2 Top #{stores.length} Restaurants
+        h2 Top #{tops.length} Restaurants
         table.table
             thead
                 td photo
@@ -31,16 +31,13 @@ block content
                 td city
                 td reviews
                 td Average Rating
-            each store, i in stores
+            each top, i in tops
                 tr 
-                    td: a(href=`/store/${store.slug}`) 
-                        img(width=200 src=`${store.photo || 'store.png'}` alt=store.name)
+                    td: a(href=`/store/${top.slug}`) 
+                        img(width=200 src=`${top.photo || 'store.png'}` alt=top.name)
                     td #{i + 1}
-                    td: a(href=`/store/${store.slug}`)= store.name
-                    td= store.city
-                    td= store.reviews.length
-                    if store.averageRating
-                        td #{Math.round(store.averageRating * 10) / 10}/5
-                    else if !store.averageRating
-                        td No store ratings
+                    td: a(href=`/store/${top.slug}`)= top.name
+                    td= top.city
+                    td= top.reviews.length
+                    td #{Math.round(top.averageRating * 10) / 10}/5
             
