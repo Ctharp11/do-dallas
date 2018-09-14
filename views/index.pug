@@ -19,6 +19,7 @@ block content
                         p.ratings-rate #{i + 1}) #{city._id} - #{city.count}
             .ratings-top-reviews   
                 h2.ratings-subhead  Best reviews:  
+                span Store must have at least 3 reviews to change this!
                     each review, i in reviews  
                         p.ratings-rate #{i + 1}) #{review._id} - #{Math.round(review.averageRatingIndex * 100) / 100} / 5
 
