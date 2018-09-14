@@ -257,6 +257,11 @@ html, body {
         transform: translateX(-50%);
     width: 83%; } }
 
+.loading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 600; }
+
 .map {
   padding: 0 20px; }
 

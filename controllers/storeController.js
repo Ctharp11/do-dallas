@@ -67,7 +67,8 @@ exports.resize = async (req, res, next) => {
 }
 
 exports.createStore = (req, res) => {
-    cloudinary.v2.uploader.upload(`./public/uploads/${req.body.photo}`, function(err, result) {
+    if (req.body.photo) {
+    cloudinary.v2.uploader.upload(`./public/uploads/store.png`, function(err, result) {
         if (err) {
             console.log(JSON.stringify(err));
             req.flash('error', `Error uploading photo. Please try again! ${err}`);
@@ -96,6 +97,27 @@ exports.createStore = (req, res) => {
                 return;
               });
     });
+    } else {
+        req.body.author = req.user._id;
+        req.body.photo = 'http://res.cloudinary.com/dhq78xeri/image/upload/v1536934984/gf9jagblfzba11wka7tp.png';
+        req.body.photo_id = 'store photo';
+        const store = (new Store(req.body))
+            .save()
+            .then(function(result) {
+                req.flash('success', `Successfully created ${result.name}!`);
+                res.redirect(`/store/${result.slug}`);
+                return;
+              }, function(err) {
+                if (err.code === 11000) {
+                    req.flash('error', "This store has already been added!");
+                    res.redirect('back'); 
+                    return;
+                }
+                req.flash('error', "Sorry, there was an error! Make sure you added at least a store address and food type!");
+                res.redirect('back'); 
+                return;
+              });
+    }
 };
 
 const confirmOwner = (store, user) => {

@@ -1019,13 +1019,12 @@ function autocomplete(input, latInput, lngInput) {
         }
     });
 
-    // address.on('keydown', function() {
-    //     console.log(this.innerHTML);
-    //     const hidden = document.querySelector('.form-flex');
-    //     if (this.innerHTML === '') {
-    //         hidden.classList.add('store-temp-hide');
-    //     }
-    // })
+    address.on('keydown', function () {
+        var hidden = document.querySelector('.form-flex');
+        if (this.innerHTML === '') {
+            hidden.classList.add('store-temp-hide');
+        }
+    });
 
     input.on('keydown', function (e) {
         if (e.keyCode === 13) e.preventDefault();
@@ -2874,6 +2873,10 @@ var _typeAhead = __webpack_require__(13);
 
 var _typeAhead2 = _interopRequireDefault(_typeAhead);
 
+var _loading = __webpack_require__(40);
+
+var _loading2 = _interopRequireDefault(_loading);
+
 var _bling = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -2882,8 +2885,40 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
 (0, _map2.default)((0, _bling.$)('#map'));
 
+var addStore = (0, _bling.$)('.get-loader');
+addStore.on('click', _loading2.default);
+
 var starForms = (0, _bling.$$)('form.star');
 starForms.on('submit', _star2.default);
+
+/***/ }),
+/* 34 */,
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function loading() {
+    console.log('submitted');
+    if (window.onload) {
+        console.log('page loaded');
+        document.querySelector('.loading').innerHTML = '';
+    } else if (!window.onload) {
+        console.log('page loading');
+        document.querySelector('.loading').innerHTML = 'Loading...';
+    }
+}
+
+exports.default = loading;
 
 /***/ })
 /******/ ]);

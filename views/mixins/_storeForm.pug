@@ -31,5 +31,5 @@ mixin storeForm(store = {})
             input(type="text" id="lat" name="location[coordinates][1]" value=(store.location && store.location.coordinates[1]))
             label(for="lng") Longitude
             input(type="text" id="lng" name="location[coordinates][0]" value=(store.location && store.location.coordinates[0]))
-        input(type="submit" value="Save Restaurant" class="button")
+        input(type="submit" class="get-loader" value="Save Restaurant" class="button")
     

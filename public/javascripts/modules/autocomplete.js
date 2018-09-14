@@ -59,13 +59,12 @@ function autocomplete(input, latInput, lngInput) {
         }
     })
 
-    // address.on('keydown', function() {
-    //     console.log(this.innerHTML);
-    //     const hidden = document.querySelector('.form-flex');
-    //     if (this.innerHTML === '') {
-    //         hidden.classList.add('store-temp-hide');
-    //     }
-    // })
+    address.on('keydown', function() {
+        const hidden = document.querySelector('.form-flex');
+        if (this.innerHTML === '') {
+            hidden.classList.add('store-temp-hide');
+        }
+    })
 
     input.on('keydown', (e) => {
         if (e.keyCode === 13) e.preventDefault();
