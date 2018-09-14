@@ -67,8 +67,8 @@ exports.resize = async (req, res, next) => {
 }
 
 exports.createStore = (req, res) => {
-    if (req.body.photo) {
-    cloudinary.v2.uploader.upload(`./public/uploads/store.png`, function(err, result) {
+    if (req.body.photo !== undefined) {
+    cloudinary.v2.uploader.upload(`./public/uploads/${req.body.photo}`, function(err, result) {
         if (err) {
             console.log(JSON.stringify(err));
             req.flash('error', `Error uploading photo. Please try again! ${err}`);
@@ -97,9 +97,9 @@ exports.createStore = (req, res) => {
                 return;
               });
     });
-    } else {
+    } else if (req.body.photo === undefined) {
         req.body.author = req.user._id;
-        req.body.photo = 'http://res.cloudinary.com/dhq78xeri/image/upload/v1536934984/gf9jagblfzba11wka7tp.png';
+        req.body.photo = 'https://res.cloudinary.com/dhq78xeri/image/upload/v1536935466/f4wyyatcs1jdxp64kora.png';
         req.body.photo_id = 'store photo';
         const store = (new Store(req.body))
             .save()
