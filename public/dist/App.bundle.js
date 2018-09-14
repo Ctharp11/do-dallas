@@ -1044,12 +1044,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 function loading() {
-    console.log('submitted');
     if (window.onload) {
-        console.log('page loaded');
         document.querySelector('.loading').innerHTML = '';
     } else if (!window.onload) {
-        console.log('page loading');
         document.querySelector('.loading').innerHTML = 'Loading...';
     }
 }
@@ -2909,7 +2906,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _map2.default)((0, _bling.$)('#map'));
 
 var addStore = (0, _bling.$)('.get-loader');
-addStore.on('click', _loading2.default);
+if (addStore) {
+   addStore.on('click', _loading2.default);
+}
 
 var starForms = (0, _bling.$$)('form.star');
 starForms.on('submit', _star2.default);

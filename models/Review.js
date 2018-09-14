@@ -15,16 +15,17 @@ const reviewSchema = new mongoose.Schema({
     store: {
         type: mongoose.Schema.ObjectId,
         ref: 'Store',
-        required: 'You must supply a restaurant'
+        required: 'You must supply a restaurant.'
     },
     text: {
         type: String,
-        required: 'Your review must have text'
+        required: 'You must write a review.'
     },
     rating: {
         type: Number,
         min: 1,
-        max: 5
+        max: 5,
+        required: 'You must give a star rating.'
     }
 },{
     toJSON: {virtuals: true },

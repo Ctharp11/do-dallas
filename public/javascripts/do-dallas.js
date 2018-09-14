@@ -11,7 +11,10 @@ typeAhead( $('.search') );
 makeMap( $('#map') );
 
 const addStore = $( '.get-loader' );
-addStore.on('click', loading)
+if (addStore) {
+   addStore.on('click', loading) 
+}
+
 
 
 const starForms = $$('form.star')
